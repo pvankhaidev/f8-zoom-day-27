@@ -1,0 +1,266 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #fff7e6, #ffdc73);
+  color: #5a3e1b;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 10px;
+  position: relative;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.app {
+  max-width: 1000px;
+  width: 100%;
+  background: #fff8dc;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(255, 190, 0, 0.3);
+}
+
+.dropzone {
+  min-height: 150px;
+  background: linear-gradient(135deg, #fff9d6, #fcd34d);
+  border: 3px dashed #b38f00;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.dropzone.dragover {
+  box-shadow: 0 0 15px 6px #ffd54f;
+  background: linear-gradient(135deg, #fffbcf, #ffec85);
+}
+
+.words {
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  user-select: none;
+}
+
+.words span,
+.dropzone span {
+  background: #fff9d6;
+  border: 2px solid #c9a227;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #4b3500;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(198, 147, 8, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  will-change: transform;
+  font-size: 22px;
+}
+
+.words span:hover {
+  background: linear-gradient(135deg, #ffea6d, #d1b300);
+  box-shadow: 0 8px 14px rgba(255, 230, 60, 0.8);
+  transform: scale(1.1);
+}
+
+.words span:active {
+  cursor: grabbing;
+  transform: scale(0.95) rotate(-3deg);
+  box-shadow: 0 4px 8px rgba(170, 140, 0, 0.7);
+}
+
+.dropzone span {
+  opacity: 0.9;
+  cursor: default;
+  user-select: none;
+}
+
+.origin {
+  margin-top: 14px;
+  font-size: 18px;
+  font-style: italic;
+  color: #b27300;
+  text-align: center;
+  user-select: text;
+  text-shadow: 1px 1px 2px rgba(180, 120, 0, 0.5);
+}
+
+/* ---------------------- */
+/* Nút ẩn hiện chú thích  */
+/* ---------------------- */
+
+.toggle-origin {
+  text-align: right;
+  margin-top: 20px;
+}
+
+#toggleOriginBtn {
+  background: #fcd34d;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #5a3e1b;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(198, 147, 8, 0.4);
+  transition: background 0.3s ease;
+}
+
+#toggleOriginBtn:hover {
+  background: #ffe98a;
+}
+
+/* ---------------------- */
+/* Kiểm tra + Thông báo  */
+/* ---------------------- */
+
+.controls {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#checkBtn {
+  background: #f7d154;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(198, 147, 8, 0.4);
+  transition: background 0.3s ease;
+}
+
+#checkBtn:hover {
+  background: #ffd861;
+}
+
+.result-popup {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 30vh;
+  width: 100%;
+  padding: 28px 36px;
+  border-radius: 20px;
+  font-size: 20px;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.result-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.result-popup.success {
+  background: #e3fce6; /* xanh pastel */
+  color: #2e7d32;
+}
+
+.result-popup.fail {
+  background: #fdeaea; /* đỏ pastel */
+  color: #c62828;
+}
+
+.result-popup button {
+  margin: 16px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.result-popup.success button {
+  background: #a5d6a7;
+  color: #1b5e20;
+}
+
+.result-popup.fail button {
+  background: #ef9a9a;
+  color: #b71c1c;
+}
+
+.hidden {
+  display: none;
+}
+/* --------------------------- */
+/* Responsive cho màn nhỏ hơn 768px */
+/* --------------------------- */
+@media (max-width: 768px) {
+  .app {
+    padding: 16px 16px;
+    border-radius: 12px;
+  }
+
+  .dropzone {
+    min-height: 120px;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .words {
+    margin-top: 60px;
+    gap: 12px;
+  }
+
+  .words span,
+  .dropzone span {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .origin {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .toggle-origin {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  #toggleOriginBtn {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  #checkBtn {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  .result-popup {
+    padding: 24px 20px;
+    font-size: 18px;
+  }
+
+  .result-popup button {
+    font-size: 15px;
+    padding: 8px 18px;
+  }
+}

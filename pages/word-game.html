@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/word-game.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Khu vực drop để sắp xếp từ -->
+      <div class="dropzone"></div>
+
+      <!-- Hiển thị câu gốc -->
+      <div class="origin"></div>
+
+      <!-- Nút ẩn/hiện chú thích -->
+      <div class="toggle-origin">
+        <button id="toggleOriginBtn">Ẩn chú thích</button>
+      </div>
+
+      <!-- Danh sách các từ đã xáo trộn -->
+      <div class="words"></div>
+
+      <!-- Nút kiểm tra -->
+      <div class="controls">
+        <button id="checkBtn">Kiểm tra kết quả</button>
+      </div>
+
+      <!-- Popup kết quả -->
+      <div class="result-popup" id="resultPopup">
+        <p id="resultMessage">Thông báo ở đây</p>
+        <button id="resultBtn">Tiếp tục</button>
+        <button id="replayBtn">Làm lại</button>
+      </div>
+    </div>
+
+    <!-- Script xử lý logic -->
+    <script src="../js/word-game.js"></script>
+  </body>
+</html>
