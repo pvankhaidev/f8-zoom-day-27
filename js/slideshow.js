@@ -6,7 +6,7 @@ const paginationDots = $$(".pagination-dot");
 const prevBtns = $$(".prev");
 const nextBtns = $$(".next");
 const slideTransitionTime = 0.3;
-const autoPlayTimeInterval = 300000;
+const autoPlayTimeInterval = 3000;
 
 document.addEventListener("DOMContentLoaded", () => {
   const slideshows = document.querySelectorAll(".slideshow");
