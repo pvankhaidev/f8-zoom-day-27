@@ -191,12 +191,11 @@
           .forEach((item) => item.classList.remove("active"));
         // Add active class to clicked lyric
         document
-          .querySelector(`.lyric-text:nth-child(${lyricId + 1})`)
+          .querySelector(`.lyric-text:nth-child(${lyricId})`)
           .classList.add("active");
         // Get the time to seek to
-        const time = document.querySelector(
-          `.lyric-text:nth-child(${lyricId + 1})`
-        ).dataset.time;
+        const time = document.querySelector(`.lyric-text:nth-child(${lyricId})`)
+          .dataset.time;
         // Add your playback logic to seek to the specified time
         console.log(`Playing from lyric ${lyricId} at ${time} seconds`);
       }

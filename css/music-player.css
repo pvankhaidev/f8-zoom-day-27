@@ -7,6 +7,7 @@
   --text: #2c2c2c;
   --shadow: rgba(0, 0, 0, 0.1);
   --highlight: #ffe3f1;
+  --highlight2: #fcf2f9;
   --font-main: "Poppins", sans-serif;
 }
 
@@ -181,12 +182,19 @@ body {
 
 .lyrics-wrapper,
 .playlist-wrapper {
-  flex: 1 1 45%;
   background: white;
   border-radius: 16px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   max-height: 65%;
   overflow-y: hidden;
+}
+
+.lyrics-wrapper {
+  flex: 1 1 55%;
+}
+
+.playlist-wrapper {
+  flex: 1 1 35%;
 }
 
 .lyrics-box-container,
@@ -218,7 +226,7 @@ body {
 }
 
 .lyric-text:hover {
-  background-color: var(--highlight);
+  background-color: var(--highlight2);
   transform: translateX(5px);
 }
 
@@ -245,7 +253,7 @@ body {
 }
 
 .song-name-item:hover {
-  background-color: var(--highlight);
+  background-color: var(--highlight2);
   border-radius: 8px;
   transform: translateX(5px);
 }
