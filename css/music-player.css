@@ -3,6 +3,7 @@
   --box-bg: rgba(255, 255, 255, 0.7);
   --accent: #ff6ec4;
   --accent2: #787ff6;
+  --accent3: #bbbef5;
   --text: #2c2c2c;
   --shadow: rgba(0, 0, 0, 0.1);
   --highlight: #ffe3f1;
@@ -14,7 +15,10 @@
   margin: 0;
   padding: 0;
 }
-
+html,
+body {
+  overflow: hidden;
+}
 .body {
   font-family: var(--font-main);
   background: var(--gradient-bg);
@@ -175,22 +179,31 @@
   flex: 1;
 }
 
-.lyrics-box-container,
-.playlist-container {
+.lyrics-wrapper,
+.playlist-wrapper {
   flex: 1 1 45%;
   background: white;
   border-radius: 16px;
-  padding: 20px 24px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-  max-height: 100%;
+  max-height: 65%;
+  overflow-y: hidden;
+}
+
+.lyrics-box-container,
+.playlist-container {
+  padding: 10px 16px;
+  height: 80%;
   overflow-y: auto;
 }
 
 .lyric-header-text,
 .playlist-header-text {
   font-size: 1.3rem;
-  margin-bottom: 12px;
-  color: var(--accent2);
+  color: var(--accent3);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 15px 10px 15px;
 }
 
 .lyric-text {
@@ -247,6 +260,38 @@
 .song-title,
 .song-duration {
   pointer-events: none;
+}
+
+/* Custom Scrollbar */
+.lyrics-box-container::-webkit-scrollbar,
+.playlist-container::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+.lyrics-box-container::-webkit-scrollbar-track,
+.playlist-container::-webkit-scrollbar-track {
+  background: var(--highlight); /* Track matches highlight color */
+  border-radius: 10px;
+  margin: 5px; /* Add some margin to avoid edges */
+}
+
+.lyrics-box-container::-webkit-scrollbar-thumb,
+.playlist-container::-webkit-scrollbar-thumb {
+  background: var(--accent3); /* Thumb uses accent color */
+  border-radius: 10px;
+  border: 2px solid var(--highlight); /* Border for contrast */
+}
+
+.lyrics-box-container::-webkit-scrollbar-thumb:hover,
+.playlist-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent); /* Hover effect with alternate accent color */
+}
+
+/* Firefox scrollbar support (simpler, as Firefox has limited customization) */
+.lyrics-box-container,
+.playlist-container {
+  scrollbar-color: var(--accent3) var(--highlight); /* Thumb and track */
+  scrollbar-width: thin;
 }
 
 /* Animation */
@@ -347,14 +392,14 @@
   .lyrics-box-container,
   .playlist-container {
     flex: 1 1 100%;
-    padding: 16px;
+    /* padding: 16px; */
     max-height: 200px;
   }
 
   .lyric-header-text,
   .playlist-header-text {
     font-size: 1.1rem;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
   }
 
   .lyric-text {
@@ -365,7 +410,7 @@
 
   .song-name-item {
     font-size: 0.95rem;
-    padding: 8px 10px;
+    padding: 12px 10px;
   }
 
   /* Improve touch interactions */
@@ -378,6 +423,37 @@
   .lyrics-box-container,
   .playlist-container {
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Custom Scrollbar for Mobile */
+  .lyrics-box-container::-webkit-scrollbar,
+  .playlist-container::-webkit-scrollbar {
+    width: 6px; /* Thinner for mobile */
+  }
+
+  .lyrics-box-container::-webkit-scrollbar-track,
+  .playlist-container::-webkit-scrollbar-track {
+    background: var(--highlight);
+    border-radius: 8px;
+    margin: 4px;
+  }
+
+  .lyrics-box-container::-webkit-scrollbar-thumb,
+  .playlist-container::-webkit-scrollbar-thumb {
+    background: var(--accent3);
+    border-radius: 8px;
+    border: 1px solid var(--highlight);
+  }
+
+  .lyrics-box-container::-webkit-scrollbar-thumb:hover,
+  .playlist-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+
+  .lyrics-box-container,
+  .playlist-container {
+    scrollbar-color: var(--accent3) var(--highlight);
+    scrollbar-width: thin;
   }
 }
 
@@ -398,10 +474,6 @@
 
   .artist-name-text {
     font-size: 0.9rem;
-  }
-
-  .controls-container {
-    justify-content: space-between; /* Tighter gap */
   }
 
   .control-btn {
@@ -433,5 +505,33 @@
   .song-name-item {
     font-size: 0.9rem;
     padding: 5px 8px;
+  }
+  .song-name-item {
+    padding: 10px 8px;
+  }
+
+  /* Custom Scrollbar for Extra Small Screens */
+  .lyrics-box-container::-webkit-scrollbar,
+  .playlist-container::-webkit-scrollbar {
+    width: 5px; /* Even thinner for small screens */
+  }
+
+  .lyrics-box-container::-webkit-scrollbar-track,
+  .playlist-container::-webkit-scrollbar-track {
+    background: var(--highlight);
+    border-radius: 8px;
+    margin: 3px;
+  }
+
+  .lyrics-box-container::-webkit-scrollbar-thumb,
+  .playlist-container::-webkit-scrollbar-thumb {
+    background: var(--accent3);
+    border-radius: 8px;
+    border: 1px solid var(--highlight);
+  }
+
+  .lyrics-box-container::-webkit-scrollbar-thumb:hover,
+  .playlist-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
   }
 }
