@@ -199,6 +199,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
 }
 
 .lyric-text:hover {
