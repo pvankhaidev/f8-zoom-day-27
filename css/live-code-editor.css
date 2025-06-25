@@ -1,0 +1,142 @@
+/* Reset cơ bản */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  /* Gradient nền tổng thể: vàng cam sáng */
+  background: linear-gradient(135deg, #ffe5b4, #ff8c42);
+  color: #3b2f2f;
+  overflow: hidden;
+}
+
+/* Container chia đôi màn hình */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  /* cho mượt khi resize */
+  user-select: none;
+  overflow: hidden;
+}
+
+.editor-pane,
+.preview-pane {
+  /* flex-basis ban đầu 50% */
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Thanh chia nằm giữa */
+#divider {
+  width: 8px;
+  background-color: #ccc; /* cam tươi sáng */
+  cursor: col-resize;
+  height: 100%;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+#divider:hover {
+  background-color: #888;
+}
+
+/* Header thanh tiêu đề */
+.header {
+  /* Gradient đỏ cam nóng */
+  background: #09122c;
+  color: #fff;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 4px solid #b72f2f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Ô preview bên phải */
+.preview-pane {
+  background-color: #fff0e5; /* sáng nhẹ vàng cam */
+}
+
+.preview-pane iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff8f0;
+}
+
+.preview-pane iframe.drag-disabled {
+  pointer-events: none;
+}
+
+/* Editor bên trái */
+#editor {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* CodeMirror hiển thị full khung */
+.CodeMirror {
+  height: 100% !important;
+  width: 100% !important;
+  font-size: 16px;
+  line-height: 1.8;
+  font-family: "Fira Code", "Courier New", monospace;
+  background-color: #fff3e6; /* màu nền ấm sáng */
+  color: #4b3832; /* chữ màu nâu ấm */
+}
+
+/* Highlight dòng hiện tại */
+.CodeMirror-activeline-background {
+  background: #ffd8b1; /* màu cam nhạt ấm */
+}
+
+/* Scrollbar xịn hơn */
+.CodeMirror-scrollbar-filler,
+.CodeMirror-gutter-filler {
+  background-color: transparent;
+}
+
+/* Context menu tùy chỉnh */
+.context-menu {
+  position: absolute;
+  background-color: #fff6f0;
+  color: #4b3832;
+  border: 1px solid #f4a261;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(204, 102, 0, 0.25);
+  z-index: 9999;
+  display: none;
+  min-width: 140px;
+  font-size: 14px;
+}
+
+.context-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.context-menu li {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.context-menu li:hover {
+  background-color: #ffb97f;
+}
