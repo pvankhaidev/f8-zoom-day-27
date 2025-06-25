@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+  <head class="head">
+    <meta charset="UTF-8" class="meta-charset" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+      class="meta-viewport"
+    />
+    <title class="title">Music Player</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+      class="font-link"
+    />
+    <link rel="stylesheet" href="../css/reset.css" class="reset-css" />
+    <link rel="stylesheet" href="../css/music-player.css" class="player-css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      class="font-awesome"
+    />
+  </head>
+  <body class="body">
+    <div class="music-player music-player-container">
+      <!-- Header: Cover + Song Info -->
+      <div class="header header-container">
+        <img
+          src="../images/image11.jpg"
+          alt="Album Art"
+          class="cover cover-image"
+        />
+        <div class="song-info song-info-container">
+          <h2 class="song-title song-title-text">Chill Vibes</h2>
+          <p class="artist-name artist-name-text">Lo-fi Artist</p>
+        </div>
+      </div>
+
+      <!-- Controls + Progress -->
+      <div class="controls-section controls-section-container">
+        <!-- Progress -->
+        <div class="progress-container progress-container-box">
+          <span class="current-time current-time-text">0:00</span>
+          <div class="progress-bar progress-bar-container">
+            <div class="progress progress-fill"></div>
+          </div>
+          <span class="duration duration-text">3:45</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls controls-container">
+          <button class="control-btn shuffle-btn">
+            <i class="fa-solid fa-shuffle icon-shuffle"></i>
+          </button>
+          <button class="control-btn backward-btn">
+            <i class="fa-solid fa-backward icon-backward"></i>
+          </button>
+          <button class="control-btn play-btn">
+            <i class="fa-solid fa-play icon-play"></i>
+          </button>
+          <button class="control-btn forward-btn">
+            <i class="fa-solid fa-forward icon-forward"></i>
+          </button>
+          <button class="control-btn repeat-btn">
+            <i class="fa-solid fa-repeat icon-repeat"></i>
+          </button>
+          <div class="volume-control volume-control-container">
+            <i class="fa-solid fa-volume-high icon-volume"></i>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="80"
+              class="volume-slider"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Lyrics + Playlist -->
+      <div class="bottom-section bottom-section-container">
+        <!-- Lyrics -->
+        <div class="lyrics-box lyrics-box-container">
+          <h3 class="lyric-header lyric-header-text">Lyrics</h3>
+          <p class="lyric lyric-text">Take a breath and feel the vibe,</p>
+          <p class="lyric lyric-text lyric-active">
+            Under stars, we come alive,
+          </p>
+          <p class="lyric lyric-text">Melody soft like summer rain,</p>
+          <p class="lyric lyric-text">Play it back and dream again.</p>
+        </div>
+
+        <!-- Playlist -->
+        <div class="playlist playlist-container">
+          <h3 class="playlist-header playlist-header-text">Playlist</h3>
+          <ul class="playlist-list">
+            <li class="song-name song-name-item active" onclick="playSong(1)">
+              <span class="song-title">1. Chill Vibes</span
+              ><span class="song-duration">3:45</span>
+            </li>
+            <li class="song-name song-name-item" onclick="playSong(2)">
+              <span class="song-title">2. Sunset Walk</span
+              ><span class="song-duration">4:20</span>
+            </li>
+            <li class="song-name song-name-item" onclick="playSong(3)">
+              <span class="song-title">3. Night Breeze</span
+              ><span class="song-duration">3:15</span>
+            </li>
+            <li class="song-name song-name-item" onclick="playSong(4)">
+              <span class="song-title">4. Ocean Eyes</span
+              ><span class="song-duration">4:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="../js/music-player.js" class="player-script"></script>
+  </body>
+</html>
