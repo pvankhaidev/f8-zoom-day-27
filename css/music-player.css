@@ -114,7 +114,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+  flex-wrap: nowrap; /* Ensure controls stay in one row */
 }
 
 .control-btn {
@@ -149,19 +150,19 @@
 .volume-control-container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 20px;
+  gap: 8px;
+  flex: 0 0 auto; /* Prevent volume control from stretching */
 }
 
 .icon-volume {
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: var(--accent2);
 }
 
 .volume-slider {
-  width: 180px;
+  width: 100px;
   accent-color: var(--accent2);
-  height: 6px;
+  height: 5px;
   border-radius: 6px;
 }
 
@@ -259,35 +260,177 @@
   }
 }
 
-/* Responsive */
+/* Responsive for Mobile */
 @media (max-width: 768px) {
   .music-player-container {
-    padding: 24px;
+    padding: 16px;
+    width: 100vw;
     height: auto;
     max-height: none;
+    border-radius: 0;
+    margin: 0;
   }
 
   .header-container {
     flex-direction: column;
     align-items: center;
+    gap: 16px;
+  }
+
+  .cover-image {
+    width: 120px;
+    height: 120px;
+    border-width: 2px;
+  }
+
+  .song-title-text {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .artist-name-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .controls-section-container {
+    gap: 16px;
+  }
+
+  .progress-container-box {
+    font-size: 0.9rem;
+  }
+
+  .progress-bar-container {
+    height: 10px;
+  }
+
+  .controls-container {
+    flex-wrap: nowrap; /* Keep controls in one row */
+    gap: 8px; /* Reduce gap */
+    padding: 8px 0;
+    justify-content: center;
+  }
+
+  .control-btn {
+    width: 45px; /* Smaller buttons */
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .play-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .volume-control-container {
+    flex: 0 0 auto;
+    gap: 6px;
+  }
+
+  .icon-volume {
+    font-size: 1.2rem;
+  }
+
+  .volume-slider {
+    width: 80px; /* Smaller slider */
+    height: 4px;
   }
 
   .bottom-section-container {
     flex-direction: column;
+    gap: 16px;
+  }
+
+  .lyrics-box-container,
+  .playlist-container {
+    flex: 1 1 100%;
+    padding: 16px;
+    max-height: 200px;
+  }
+
+  .lyric-header-text,
+  .playlist-header-text {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .lyric-text {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+  }
+
+  .song-name-item {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+
+  /* Improve touch interactions */
+  .control-btn,
+  .lyric-text,
+  .song-name-item {
+    touch-action: manipulation;
+  }
+
+  .lyrics-box-container,
+  .playlist-container {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Extra small screens (below 480px) */
+@media (max-width: 480px) {
+  .music-player-container {
+    padding: 12px;
   }
 
   .cover-image {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .song-title-text {
+    font-size: 1.5rem;
+  }
+
+  .artist-name-text {
+    font-size: 0.9rem;
   }
 
   .controls-container {
-    flex-wrap: wrap;
+    justify-content: space-between; /* Tighter gap */
+  }
+
+  .control-btn {
+    width: 40px; /* Even smaller buttons */
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .play-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
   }
 
   .volume-control-container {
-    width: 100%;
-    justify-content: center;
-    padding: 10px 0;
+    gap: 4px;
+  }
+
+  .icon-volume {
+    font-size: 1rem;
+  }
+
+  .volume-slider {
+    width: 60px; /* Even smaller slider */
+    height: 4px;
+  }
+
+  .lyric-text,
+  .song-name-item {
+    font-size: 0.9rem;
+    padding: 5px 8px;
   }
 }

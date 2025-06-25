@@ -58,7 +58,10 @@
           <button class="control-btn play-btn">
             <i class="fa-solid fa-play icon-play"></i>
           </button>
-          <button class="control-btn forward-btn">
+          <!-- <button class="control-btn play-btn">
+            <i class="fa-solid fa-pause icon-play"></i>
+          </button> -->
+          <button class="control-btn control-btn">
             <i class="fa-solid fa-forward icon-forward"></i>
           </button>
           <button class="control-btn repeat-btn">
@@ -78,22 +81,32 @@
       </div>
 
       <!-- Lyrics + Playlist -->
-      <div class="bottom-section bottom-section-container">
+      <div class="bottom-section-container">
         <!-- Lyrics -->
         <div class="lyrics-box lyrics-box-container">
           <h3 class="lyric-header lyric-header-text">Lyrics</h3>
-          <p class="lyric lyric-text">Take a breath and feel the vibe,</p>
-          <p class="lyric lyric-text lyric-active">
-            Under stars, we come alive,
+          <p class="lyric lyric-text" onclick="playLyric(1)" data-time="10">
+            Take a breath and feel the vibe
           </p>
-          <p class="lyric lyric-text">Melody soft like summer rain,</p>
-          <p class="lyric lyric-text">Play it back and dream again.</p>
+          <p
+            class="lyric lyric-text lyric-active active"
+            onclick="playLyric(2)"
+            data-time="20"
+          >
+            Under stars, we come alive
+          </p>
+          <p class="lyric lyric-text" onclick="playLyric(3)" data-time="30">
+            Melody soft like summer rain
+          </p>
+          <p class="lyric lyric-text" onclick="playLyric(4)" data-time="40">
+            Play it back and dream again.
+          </p>
         </div>
 
         <!-- Playlist -->
         <div class="playlist playlist-container">
-          <h3 class="playlist-header playlist-header-text">Playlist</h3>
-          <ul class="playlist-list">
+          <h3 class="header playlist-header-text">Playlist</h3>
+          <ul class="playlist-ul playlist-list">
             <li class="song-name song-name-item active" onclick="playSong(1)">
               <span class="song-title">1. Chill Vibes</span
               ><span class="song-duration">3:45</span>
@@ -115,5 +128,36 @@
       </div>
     </div>
     <script src="../js/music-player.js" class="player-script"></script>
+    <script class="inline-script">
+      function playSong(songId) {
+        // Remove active class from all songs
+        document
+          .querySelectorAll(".song-name-item")
+          .forEach((item) => item.classList.remove("active"));
+        // Add active class to clicked song
+        document
+          .querySelector(`.song-name-item:nth-child(${songId})`)
+          .classList.add("active");
+        // Add your song playback logic here
+        console.log(`Playing song ${songId}`);
+      }
+
+      function playLyric(lyricId) {
+        // Remove active class from all lyrics
+        document
+          .querySelectorAll(".lyric-text")
+          .forEach((item) => item.classList.remove("active"));
+        // Add active class to clicked lyric
+        document
+          .querySelector(`.lyric-text:nth-child(${lyricId + 1})`)
+          .classList.add("active");
+        // Get the time to seek to
+        const time = document.querySelector(
+          `.lyric-text:nth-child(${lyricId + 1})`
+        ).dataset.time;
+        // Add your playback logic to seek to the specified time
+        console.log(`Playing from lyric ${lyricId} at ${time} seconds`);
+      }
+    </script>
   </body>
 </html>
