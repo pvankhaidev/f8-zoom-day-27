@@ -1,14 +1,13 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
+// ==================================================================
+// ── S ──────────────────────── Player ─────────────────────────────
 const Player = {
-  // Biến const
+  // ──────────────────────── Biến const ────────────────────────────
   consts: Object.freeze({
     // Biến lưu 3 trạng thái loop
-    LOOP_MODES: Object.freeze({
-      NO_LOOP: 0, // Không lặp
-      LOOP_ONE: 1, // Lặp 1 bài
-      LOOP_ALL: 2, // Lặp toàn bộ playlist
+    REPEAT_MODES: Object.freeze({
+      NO_REPEAT: 0, // Không lặp
+      REPEAT_ONE: 1, // Lặp 1 bài
+      REPEAT_ALL: 2, // Lặp toàn bộ playlist
     }),
     // Biến lưu trạng thái bool ở dạng chuỗi, dùng để lưu trạng thái trong storage
     BOOLEAN_STRING: Object.freeze({
@@ -56,8 +55,12 @@ const Player = {
     }),
   }),
 
-  // Biến global
+  // ──────────────────────── Biến global ──────────────────────────────
   vars: {
+    // Biến lưu trạng thái play, pause
+    isPlaying: false,
+    // Biến lưu âm thanh
+    audio: new Audio(),
     // Biến lưu trạng thái hiển thị lyrics
     isLyricsVisible: false,
     // Biến lưu trạng thái sắp xếp
@@ -68,70 +71,186 @@ const Player = {
     allSongItems: [
       {
         id: 1,
-        name: "Sunrise Drive",
-        artist: "Luna Hart",
-        album: "Morning Escape",
-        imgPath: "images/sunrise-drive.jpg",
+        name: "Chạm Đáy Nỗi Đau",
+        artist: "ERIK",
+        album: "Single",
+        songPath: "../music/ChamDayNoiDau-ERIK.mp3",
         time: "03:42",
-        songPath: "songs/sunrise-drive.mp3",
+        songImgPath: "songs/cham-day-noi-dau.mp3",
         sub: [
           {
             no: 1,
             timeStart: 0.0,
-            timeEnd: 5.2,
-            subText: "Waking up to the morning light",
+            timeEnd: 4.0,
+            subText: "Neon signs flicker in the rain",
           },
           {
             no: 2,
-            timeStart: 5.21,
-            timeEnd: 10.5,
-            subText: "Driving down the open road",
+            timeStart: 4.01,
+            timeEnd: 8.5,
+            subText: "Walking streets with no one around",
           },
           {
             no: 3,
-            timeStart: 10.51,
-            timeEnd: 15.0,
-            subText: "Feel the breeze and the sunlight",
+            timeStart: 8.51,
+            timeEnd: 12.0,
+            subText: "Lost in the city lights",
           },
         ],
       },
       {
         id: 2,
-        name: "Echoes of You",
-        artist: "The Hollow Trees",
-        album: "Midnight Memories",
-        imgPath: "images/echoes-of-you.jpg",
+        name: "Chạy Ngay Đi",
+        artist: "Sơn Tùng M-TP",
+        album: "Single",
+        songPath: "../music/ChayNgayDi-SonTungMTP.mp3",
         time: "04:15",
-        songPath: "songs/echoes-of-you.mp3",
+        songImgPath: "songs/chay-ngay-di.mp3",
         sub: [
           {
             no: 1,
             timeStart: 0.0,
-            timeEnd: 6.0,
-            subText: "Echoes of your voice remain",
+            timeEnd: 4.0,
+            subText: "Neon signs flicker in the rain",
           },
           {
             no: 2,
-            timeStart: 6.01,
-            timeEnd: 12.3,
-            subText: "Haunting me through the night",
+            timeStart: 4.01,
+            timeEnd: 8.5,
+            subText: "Walking streets with no one around",
           },
           {
             no: 3,
-            timeStart: 12.31,
-            timeEnd: 18.0,
-            subText: "I can't forget your face",
+            timeStart: 8.51,
+            timeEnd: 12.0,
+            subText: "Lost in the city lights",
           },
         ],
       },
       {
         id: 3,
-        name: "City Lights",
-        artist: "Noah Grey",
-        album: "Urban Nights",
-        imgPath: "images/city-lights.jpg",
+        name: "Chúng Ta Không Thuộc Về Nhau",
+        artist: "Sơn Tùng M-TP",
+        album: "Single",
+        songPath: "../music/ChungTaKhongThuocVeNhau-SonTungMTP.mp3",
         time: "02:58",
-        songPath: "songs/city-lights.mp3",
+        songImgPath: "songs/chung-ta-khong-thuoc-ve-nhau.mp3",
+        sub: [
+          {
+            no: 1,
+            timeStart: 0.0,
+            timeEnd: 4.0,
+            subText: "Neon signs flicker in the rain",
+          },
+          {
+            no: 2,
+            timeStart: 4.01,
+            timeEnd: 8.5,
+            subText: "Walking streets with no one around",
+          },
+          {
+            no: 3,
+            timeStart: 8.51,
+            timeEnd: 12.0,
+            subText: "Lost in the city lights",
+          },
+        ],
+      },
+      {
+        id: 4,
+        name: "Đừng Ai Nhắc Về Anh Ấy",
+        artist: "Trà My Idol",
+        album: "Single",
+        songPath: "../music/DungAiNhacVeAnhAy-TraMyIdol.mp3",
+        time: "02:58",
+        songImgPath: "songs/dung-ai-nhac-ve-anh-ay.mp3",
+        sub: [
+          {
+            no: 1,
+            timeStart: 0.0,
+            timeEnd: 4.0,
+            subText: "Neon signs flicker in the rain",
+          },
+          {
+            no: 2,
+            timeStart: 4.01,
+            timeEnd: 8.5,
+            subText: "Walking streets with no one around",
+          },
+          {
+            no: 3,
+            timeStart: 8.51,
+            timeEnd: 12.0,
+            subText: "Lost in the city lights",
+          },
+        ],
+      },
+      {
+        id: 5,
+        name: "Dưới Những Cơn Mưa",
+        artist: "Mr. Siro",
+        album: "Single",
+        songPath: "../music/DuoiNhungConMua-MrSiro.mp3",
+        time: "02:58",
+        songImgPath: "songs/duoi-nhung-con-mua.mp3",
+        sub: [
+          {
+            no: 1,
+            timeStart: 0.0,
+            timeEnd: 4.0,
+            subText: "Neon signs flicker in the rain",
+          },
+          {
+            no: 2,
+            timeStart: 4.01,
+            timeEnd: 8.5,
+            subText: "Walking streets with no one around",
+          },
+          {
+            no: 3,
+            timeStart: 8.51,
+            timeEnd: 12.0,
+            subText: "Lost in the city lights",
+          },
+        ],
+      },
+      {
+        id: 6,
+        name: "Hãy Trao Cho Anh",
+        artist: "Sơn Tùng M-TP ft. Snoop Dogg",
+        album: "Single",
+        songPath: "../music/HayTraoChoAnh-SonTungMTPSnoopDogg.mp3",
+        time: "02:58",
+        songImgPath: "songs/hay-trao-cho-anh.mp3",
+        sub: [
+          {
+            no: 1,
+            timeStart: 0.0,
+            timeEnd: 4.0,
+            subText: "Neon signs flicker in the rain",
+          },
+          {
+            no: 2,
+            timeStart: 4.01,
+            timeEnd: 8.5,
+            subText: "Walking streets with no one around",
+          },
+          {
+            no: 3,
+            timeStart: 8.51,
+            timeEnd: 12.0,
+            subText: "Lost in the city lights",
+          },
+        ],
+      },
+      {
+        id: 7,
+        name: "Nắng Ấm Xa Dần",
+        artist: "Sơn Tùng M-TP",
+        album: "Single",
+        songPath: "../music/NangAmXaDan-SonTungMTP.mp3",
+        time: "02:58",
+        songImgPath: "songs/nang-am-xa-dan.mp3",
         sub: [
           {
             no: 1,
@@ -154,6 +273,7 @@ const Player = {
         ],
       },
     ],
+
     // Tất cả các danh sách phát đề xuất
     allPlaylists: [
       {
@@ -176,7 +296,16 @@ const Player = {
       },
     ],
     // Biến lưu bài hát hiện tại
-    currentSongId: null,
+    currentSong: {
+      id: null,
+      name: "",
+      artist: "",
+      album: "",
+      songPath: "",
+      songImgPath: "",
+      time: "",
+      sub: [],
+    },
     // Biến lưu bài phát gần nhất
     lastPlayedSong: {
       id: null,
@@ -190,8 +319,8 @@ const Player = {
     playHistory: [],
   },
 
-  // Danh sách phần tử
-  elements: {
+  // ──────────────────────── Elements ──────────────────────────────
+  elements: Object.freeze({
     // ====== Tổng quát ======
     playerContainer: $(".music-player"),
 
@@ -201,17 +330,16 @@ const Player = {
     artistNameText: $(".artist-name-text"),
     settingBtn: $(".setting-btn"),
 
-    // ====== Controls Section ======
-    playBtn: $(".play-btn"),
-    backwardBtn: $(".backward-btn"),
-    forwardBtn: $(".forward-btn"),
-    shuffleBtn: $(".shuffle-btn"),
-    repeatBtn: $(".repeat-btn"),
+    // ====== Controls Button ======
     lyricBtn: $(".lyric-btn"),
+    shuffleBtn: $(".shuffle-btn"),
+    backwardBtn: $(".backward-btn"),
+    playBtn: $(".play-btn"),
+    forwardBtn: $(".forward-btn"),
+    repeatBtn: $(".repeat-btn"),
     likeBtn: $(".like-btn"),
 
     // ====== Volume ======
-    // volumeBtn: $(".icon-volume"), // nếu có dùng icon riêng
     volumeSlider: $(".volume-slider"),
 
     // ====== Progress Bar ======
@@ -233,35 +361,127 @@ const Player = {
     // ====== Header Texts (Lyrics & Playlist) ======
     lyricHeader: $(".lyric-header-text"),
     playlistHeader: $(".playlist-header-text"),
-  },
 
-  // Danh sách các phương thức
+    // ====== Modal ======
+    modal: $(".modal"),
+    modalContent: $(".modal-content"),
+    settingBtn: $(".setting-btn"),
+    closeBtn: $(".close-btn"),
+  }),
+
+  // ──────────────────────── Methods ──────────────────────────────
   methods: {
-    // ==== Playback control ====
+    // ================================
+    // ── Playback Control Methods ──
+    // ================================
     playback: {
+      /**
+       * Phát bài hát hiện tại
+       */
       playSong() {
-        // Phát bài hát hiện tại
+        const song = Player.vars.currentSong;
+        if (!song || !song.songPath) return;
+
+        const audio = Player.vars.audio;
+        audio.src = song.songPath;
+        audio.play();
+        Player.vars.isPlaying = true;
       },
+
+      /**
+       * Tạm dừng bài hát
+       */
       pauseSong() {
-        // Tạm dừng bài hát
+        Player.vars.audio.pause();
+        Player.vars.isPlaying = false;
       },
+
+      /**
+       * Chuyển đổi giữa phát và tạm dừng
+       */
       togglePlayPause() {
-        // Bật/tắt phát bài hát
+        const audio = Player.vars.audio;
+        if (audio.paused) {
+          this.playSong();
+        } else {
+          this.pauseSong();
+        }
       },
+
+      /**
+       * Phát bài tiếp theo trong danh sách
+       */
       playNext() {
-        // Phát bài kế tiếp
+        const currentId = Player.vars.currentSong.id;
+        const playlist = Player.vars.currentPlaylist.length
+          ? Player.vars.currentPlaylist
+          : Player.vars.allSongItems;
+
+        const index = playlist.findIndex((s) => s.id === currentId);
+        const nextIndex = (index + 1) % playlist.length;
+        Player.vars.currentSong = playlist[nextIndex];
+
+        this.playSong();
       },
+
+      /**
+       * Phát bài trước đó trong danh sách
+       */
       playPrev() {
-        // Phát bài trước đó
+        const currentId = Player.vars.currentSong.id;
+        const playlist = Player.vars.currentPlaylist.length
+          ? Player.vars.currentPlaylist
+          : Player.vars.allSongItems;
+
+        const index = playlist.findIndex((s) => s.id === currentId);
+        const prevIndex = (index - 1 + playlist.length) % playlist.length;
+        Player.vars.currentSong = playlist[prevIndex];
+
+        this.playSong();
       },
+
+      /**
+       * Tua đến thời điểm cụ thể trong bài hát
+       * @param {number} time - thời gian muốn tua đến (tính bằng giây)
+       */
       seekTo(time) {
-        // Tua bài hát đến thời điểm cụ thể
+        Player.vars.audio.currentTime = time;
       },
+
+      /**
+       * Cập nhật tiến trình bài hát và đồng bộ UI
+       */
       updateProgress() {
-        // Cập nhật tiến trình bài hát
+        const audio = Player.vars.audio;
+        const current = audio.currentTime;
+        const duration = audio.duration || 0;
+
+        Player.elements.currentTimeText.textContent = this.formatTime(current);
+        Player.elements.durationText.textContent = this.formatTime(duration);
+
+        const percent = (current / duration) * 100;
+        Player.elements.progressFill.style.width = `${percent}%`;
       },
+
+      /**
+       * Thiết lập âm lượng
+       * @param {number} volume - giá trị từ 0.0 đến 1.0
+       */
       setVolume(volume) {
-        // Đặt âm lượng
+        Player.vars.audio.volume = Math.min(Math.max(volume, 0), 1);
+      },
+
+      /**
+       * Chuyển đổi thời gian giây → định dạng mm:ss
+       * @param {number} time
+       * @returns {string}
+       */
+      formatTime(time) {
+        const mins = Math.floor(time / 60);
+        const secs = Math.floor(time % 60)
+          .toString()
+          .padStart(2, "0");
+        return `${mins}:${secs}`;
       },
     },
 
@@ -323,7 +543,7 @@ const Player = {
       },
     },
 
-    // ==== Lyrics (Supichi) ====
+    // ==== Lyrics ====
     lyrics: {
       renderLyrics(songId) {
         // Hiển thị lời bài hát theo ID
@@ -350,7 +570,7 @@ const Player = {
       },
     },
 
-    // ==== App State Persistence ====
+    // ==== Local storage ====
     storage: {
       saveLastPlayed() {
         // Lưu bài hát phát gần nhất vào localStorage
@@ -359,22 +579,212 @@ const Player = {
         // Tải bài hát gần nhất đã phát từ localStorage
       },
     },
+
+    // ==== Modal ====
+    modal: {
+      // Hàm tougle modal
+      toggleModal() {
+        modal.classList.toggle("show");
+      },
+    },
+    // ==== Control Button ====
+    controlButton: {
+      // Hàm đổi trạng thái bật tắt lyrics
+      changeLyricState(el, iconActive, iconNone) {
+        el.classList.toggle("active");
+        el.innerHTML = el.classList.contains("active") ? iconActive : iconNone;
+        Player.vars.isLyricsVisible = el.classList.contains("active");
+      },
+      // Hàm đổi trạng thái bật tắt trộn
+      changeShuffleState(el) {
+        el.classList.toggle("inactive");
+        Player.vars.isShuffle = el.classList.contains("inactive");
+      },
+      // Hàm đổi trạng thái bật tắt repeat
+      changeRepeatState(el) {
+        const { NO_REPEAT, REPEAT_ONE, REPEAT_ALL } =
+          Player.consts.REPEAT_MODES;
+        el.classList.remove("active");
+        el.classList.remove("single");
+        el.classList.remove("inactive");
+
+        if (Player.vars.loopMode === NO_REPEAT) {
+          el.classList.add("active");
+          Player.vars.loopMode = REPEAT_ALL;
+        } else if (Player.vars.loopMode === REPEAT_ALL) {
+          el.classList.add("single");
+          Player.vars.loopMode = REPEAT_ONE;
+        } else {
+          el.classList.add("inactive");
+          Player.vars.loopMode = NO_REPEAT;
+        }
+        console.log(Player.vars.loopMode);
+      },
+      // Hàm đổi trạng thái bật tắt yêu thích
+      changeLikedState(el, iconActive, iconNone, isForce = null) {
+        let isLiked = false;
+        if (isForce) {
+          // Gán trực tiếp
+          if (isForce === true) {
+            el.classList.remove("active");
+            el.classList.add("active");
+            isLiked = true;
+          } else {
+            el.classList.remove("active");
+            isLiked = false;
+          }
+        } else {
+          // Gán theo kiểu tougle
+          el.classList.toggle("active");
+          isLiked = el.classList.contains("active");
+        }
+
+        // Cập nhật icon
+        el.innerHTML = isLiked ? iconActive : iconNone;
+
+        if (isLiked) {
+          // Hàm lưu bài hát yêu thích vào mảng, storage
+        } else {
+          // Hoặc hàm xóa khỏi mảng, storage
+        }
+      },
+      // Hàm đổi trạng thái play, pause
+      changePlayState(el, iconPause, iconPlay, blnForce = null) {
+        const audio = Player.vars.audio;
+        const currentSong = Player.vars.currentSong;
+
+        if (blnForce !== null) {
+          Player.vars.isPlaying = blnForce === true;
+        } else {
+          el.classList.toggle("active");
+          Player.vars.isPlaying = el.classList.contains("active");
+        }
+
+        el.innerHTML = Player.vars.isPlaying ? iconPause : iconPlay;
+
+        if (Player.vars.isPlaying) {
+          const currentPath = new URL(
+            currentSong.songPath,
+            window.location.href
+          ).href;
+          if (audio.src !== currentPath) {
+            audio.src = currentPath;
+          }
+
+          // Nếu đang không phát, phát tiếp (resume)
+          if (audio.paused) {
+            audio.play();
+          }
+        } else {
+          audio.pause();
+        }
+      },
+    },
   },
 };
+// ── E ──────────────────────── Player ─────────────────────────────
+// ==================================================================
 
-//////////////////////////////////////////////////////////
-// Làm phần Modal tougle
-//////////////////////////////////////////////////////////
-const modal = $(".modal");
-const settingBtn = $(".setting-btn");
-const closeBtn = $(".close-btn");
-// Hàm tougle modal
-function toggleModal() {
-  modal.classList.toggle("show");
-}
+// ==================================================================
+// ── S ──────────────────────── Modal ──────────────────────────────
 // Sự kiện nhấn nút menu và close
+const { modal, settingBtn, closeBtn } = Player.elements;
+const { toggleModal } = Player.methods.modal;
+
+// Nhấn nút Menu mở Modal
 settingBtn.addEventListener("click", toggleModal);
+// Nhấn nút close và vùng overlay đóng Modal
 closeBtn.addEventListener("click", toggleModal);
-//////////////////////////////////////////////////////////
-// Modal tougle
-//////////////////////////////////////////////////////////
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    toggleModal();
+  }
+});
+// ── E ──────────────────────── Modal ──────────────────────────────
+// ==================================================================
+
+// ==================================================================
+// ── S ──────────────────────── Control Button ─────────────────────
+const {
+  lyricBtn,
+  shuffleBtn,
+  backwardBtn,
+  playBtn,
+  forwardBtn,
+  repeatBtn,
+  likeBtn,
+} = Player.elements;
+
+const {
+  changeLyricState,
+  changeShuffleState,
+  changeRepeatState,
+  changeLikedState,
+  changePlayState,
+} = Player.methods.controlButton;
+// Sự kiện nhấn nút cc
+lyricBtn.addEventListener("click", function () {
+  changeLyricState(
+    this,
+    '<i class="fa-solid fa-closed-captioning"></i>',
+    '<i class="fa-regular fa-closed-captioning"></i>'
+  );
+});
+// Sự kiện nhấn nút shuffle
+shuffleBtn.addEventListener("click", function () {
+  changeShuffleState(this);
+});
+// Sự kiện nhấn nút repeat
+repeatBtn.addEventListener("click", function () {
+  changeRepeatState(this);
+});
+// Sự kiện nhấn nút yêu thích
+likeBtn.addEventListener("click", function () {
+  changeLikedState(
+    this,
+    '<i class="fa-solid fa-heart"></i>',
+    '<i class="fa-regular fa-heart"></i>'
+  );
+});
+// Sự kiện nhấn nút playBtn
+playBtn.addEventListener("click", function () {
+  changePlayState(
+    this,
+    '<i class="fa-solid fa-pause"></i>',
+    '<i class="fa-solid fa-play icon-play"></i>'
+  );
+});
+// Sự kiện nhấn nút backward
+backwardBtn.addEventListener("click", function () {
+  // Hàm xử lý lùi
+});
+// Sự kiện nhấn nút forward
+forwardBtn.addEventListener("click", function () {
+  // Hàm xử lý tiến
+});
+
+// ── E ──────────────────────── Control Button ─────────────────────
+// ==================================================================
+
+//
+const playback = Player.methods.playback;
+const audio = Player.vars.audio;
+
+// Gán bài hát đầu tiên làm current
+Player.vars.currentSong = Player.vars.allSongItems[0];
+
+// Cập nhật src vào thẻ Audio
+audio.src = Player.vars.currentSong.songPath;
+
+// Load metadata như thời lượng
+audio.addEventListener("loadedmetadata", () => {
+  Player.elements.durationText.textContent = playback.formatTime(
+    audio.duration
+  );
+});
+
+// Cập nhật thời gian, tiến độ
+audio.addEventListener("timeupdate", playback.updateProgress);
+
+// Xử lý khi kết thúc bài hát
+audio.addEventListener("ended", playback.playNext);

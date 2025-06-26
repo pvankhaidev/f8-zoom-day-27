@@ -45,17 +45,20 @@
         <div class="progress-container progress-container-box">
           <span class="current-time current-time-text">0:00</span>
           <div class="progress-bar progress-bar-container">
-            <div class="progress progress-fill"></div>
+            <div class="progress progress-fill">
+              <div class="progress-handle"></div>
+            </div>
           </div>
+
           <span class="duration duration-text">3:45</span>
         </div>
 
         <!-- Controls -->
         <div class="controls controls-container">
-          <button class="control-btn lyric-btn active">
+          <button class="control-btn lyric-btn">
             <i class="fa-regular fa-closed-captioning"></i>
           </button>
-          <button class="control-btn shuffle-btn">
+          <button class="control-btn shuffle-btn inactive">
             <i class="fa-solid fa-shuffle icon-shuffle"></i>
           </button>
           <button class="control-btn backward-btn">
@@ -67,7 +70,7 @@
           <button class="control-btn forward-btn">
             <i class="fa-solid fa-forward icon-forward"></i>
           </button>
-          <button class="control-btn repeat-btn active">
+          <button class="control-btn repeat-btn inactive">
             <i class="fa-solid fa-repeat icon-repeat"></i>
           </button>
           <button class="control-btn like-btn">
@@ -175,7 +178,7 @@
     <div class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <button class="close-btn">
+          <button class="control-btn close-btn">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -255,13 +258,9 @@
         </div>
       </div>
     </div>
-
-    <script src="../js/music-player.js" class="player-script"></script>
-    <script
-      src="../js/music-player-slideshow.js"
-      class="player-script"
-    ></script>
     <script class="inline-script">
+      const $ = document.querySelector.bind(document);
+      const $$ = document.querySelectorAll.bind(document);
       function playSong(songId) {
         // Remove active class from all songs
         document
@@ -291,5 +290,10 @@
         console.log(`Playing from lyric ${lyricId} at ${time} seconds`);
       }
     </script>
+    <script src="../js/music-player.js" class="player-script"></script>
+    <script
+      src="../js/music-player-slideshow.js"
+      class="player-script"
+    ></script>
   </body>
 </html>

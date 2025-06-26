@@ -136,9 +136,11 @@ body {
   background: #ddd;
   height: 12px;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
+/* Progress bar */
 .progress-fill {
   background: linear-gradient(
     90deg,
@@ -146,9 +148,32 @@ body {
     var(--color-secondary)
   );
   width: 30%;
+  max-width: 100%;
   height: 100%;
   transition: width 0.3s ease;
   border-radius: 12px;
+  position: relative;
+}
+
+/* Chấm tròn kéo */
+.progress-handle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px var(--shadow-main);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.progress-handle:hover {
+  transform: translate(50%, -50%) scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .current-time-text,
@@ -181,10 +206,40 @@ body {
   /* box-shadow: 0 4px 10px var(--shadow-main); */
 }
 
+.control-btn.lyric-btn,
+.control-btn.like-btn {
+  opacity: 0.5;
+}
+.control-btn.active {
+  opacity: 1;
+}
+
+/* Bọc nút để định vị số 1 */
+.control-btn.repeat-btn.single {
+  opacity: 1;
+  position: relative;
+}
+
+/* Trạng thái repeat 1 bài */
+.control-btn.repeat-btn.single::after {
+  content: "1";
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+  pointer-events: none;
+}
+
+.control-btn.inactive {
+  opacity: 0.5;
+}
+
 .control-btn:hover {
   opacity: 0.7;
 }
-
 .play-btn {
   font-size: 2.5rem;
   /* background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); */
@@ -732,11 +787,6 @@ body {
 
   .icon-volume {
     font-size: 1.2rem;
-  }
-
-  .volume-slider {
-    /* width: 80px; */ /* Smaller slider */
-    /* height: 4px; */
   }
 
   /* .bottom-section-container {
