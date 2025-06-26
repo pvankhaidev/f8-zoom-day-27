@@ -12,7 +12,7 @@
   --font-main: "Poppins", sans-serif;
 }
 
-/* :root {
+:root {
   --bg-gradient-main: linear-gradient(135deg, #1e1e1e, #2a2a2a);
   --bg-panel: rgba(40, 40, 40, 0.85);
   --color-primary: #9f7aea;
@@ -24,7 +24,7 @@
   --color-text-secondary: #888888;
   --color-highlight-light: #3a3a3a;
   --font-main: "Poppins", sans-serif;
-} */
+}
 
 /* 
 :root {
@@ -182,8 +182,6 @@ body {
 }
 
 .control-btn:hover {
-  transform: scale(1.1);
-  /* color: var(--color-primary); */
   opacity: 0.7;
 }
 
@@ -192,26 +190,6 @@ body {
   /* background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); */
   /* color: white; */
   /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); */
-}
-
-/* Volume */
-.volume-control-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 0 0 auto; /* Prevent volume control from stretching */
-}
-
-.icon-volume {
-  font-size: 1.4rem;
-  color: var(--color-secondary);
-}
-
-.volume-slider {
-  width: 100px;
-  accent-color: var(--color-secondary);
-  height: 5px;
-  border-radius: 6px;
 }
 
 /* Bottom Section */
@@ -345,26 +323,30 @@ body {
 
 /* Custom Scrollbar */
 .lyrics-box-container::-webkit-scrollbar,
-.playlist-container::-webkit-scrollbar {
+.playlist-container::-webkit-scrollbar,
+.modal-main::-webkit-scrollbar {
   width: 8px; /* Thin scrollbar */
 }
 
 .lyrics-box-container::-webkit-scrollbar-track,
-.playlist-container::-webkit-scrollbar-track {
+.playlist-container::-webkit-scrollbar-track,
+.modal-main::-webkit-scrollbar-track {
   background: var(--color-highlight); /* Track matches highlight color */
   border-radius: 10px;
   margin: 5px; /* Add some margin to avoid edges */
 }
 
 .lyrics-box-container::-webkit-scrollbar-thumb,
-.playlist-container::-webkit-scrollbar-thumb {
+.playlist-container::-webkit-scrollbar-thumb,
+.modal-main::-webkit-scrollbar-thumb {
   background: var(--color-tertiary); /* Thumb uses accent color */
   border-radius: 10px;
   border: 2px solid var(--color-highlight); /* Border for contrast */
 }
 
 .lyrics-box-container::-webkit-scrollbar-thumb:hover,
-.playlist-container::-webkit-scrollbar-thumb:hover {
+.playlist-container::-webkit-scrollbar-thumb:hover,
+.modal-main::-webkit-scrollbar-thumb:hover {
   background: var(
     --color-primary
   ); /* Hover effect with alternate accent color */
@@ -372,7 +354,8 @@ body {
 
 /* Firefox scrollbar support (simpler, as Firefox has limited customization) */
 .lyrics-box-container,
-.playlist-container {
+.playlist-container,
+.modal-main {
   scrollbar-color: var(--color-tertiary) var(--color-highlight); /* Thumb and track */
   scrollbar-width: thin;
 }
@@ -387,6 +370,295 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex; /* giữ luôn ở đây */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background: var(--shadow-main);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--color-highlight-light);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px var(--shadow-main);
+  font-family: var(--font-main);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.modal-content * {
+  width: 100%;
+}
+.modal h5 {
+  color: var(--color-text);
+  margin-top: 20px;
+}
+
+.modal-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; /* Thêm dòng này để header kéo dài toàn phần */
+  height: 4rem;
+  z-index: 1001;
+  display: flex;
+  justify-content: flex-end; /* Đẩy nút sang phải */
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* Close Button */
+.close-btn {
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-main {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  max-height: 65vh;
+  padding: 1rem;
+  overflow-y: auto;
+}
+/* Volume */
+.modal .volume-control-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  width: 100%;
+  flex: 0 0 auto;
+  justify-content: center;
+}
+
+.modal .icon-volume {
+  font-size: 1.4rem;
+  color: var(--color-secondary);
+  width: 40px;
+}
+
+.volume-slider {
+  accent-color: var(--color-secondary);
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* Playlist Slide Show */
+.modal-section.slideshow-section {
+  height: 200px;
+}
+
+.playlist-slide-show {
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* Slideshow Container */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow-main);
+  background: var(--bg-gradient-main);
+  margin: 0 auto;
+}
+
+/* Track Container */
+.slideshow-track {
+  display: flex;
+  height: 100%;
+}
+
+.slide-item {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  user-select: none;
+  text-shadow: var(--shadow-main);
+  box-shadow: inset 0 0 50px var(--color-highlight-light);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.4); /* lớp phủ tối */
+  background-blend-mode: darken; /* hoặc multiply */
+}
+
+.slide-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px var(--shadow-main);
+}
+
+/* .slide-item::after {
+  content: none;
+} */
+
+/* Navigation Buttons */
+.slideshow-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 1000;
+  border: none;
+  color: var(--color-highlight-light);
+  font-size: 2.2rem;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.slideshow:hover .slideshow-button {
+  opacity: 1;
+}
+
+/* Prev Button */
+.slideshow-button.prev {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-text-secondary),
+    transparent
+  );
+}
+
+.slideshow-button.prev:hover {
+  background: linear-gradient(
+    to right,
+    var(---color-text-secondary),
+    transparent
+  );
+}
+
+/* Next Button */
+.slideshow-button.next {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--color-text-secondary),
+    transparent
+  );
+}
+
+.slideshow-button.next:hover {
+  background: linear-gradient(
+    to left,
+    var(--color-text-secondary),
+    transparent
+  );
+}
+
+/* Pagination Dots */
+.slideshow-pagination {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.pagination-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 6px var(--color-secondary);
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  border: 2.5px solid transparent;
+}
+
+.pagination-dot.active {
+  background: var(--color-secondary);
+  box-shadow: 0 0 10px var(--color-secondary);
+  border-color: var(--color-tertiary);
+}
+
+/* Theme Samples */
+.theme-section {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.theme-sample {
+  flex: 1;
+  padding: 1rem;
+  background: var(--color-tertiary);
+  color: var(--color-text-main);
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--shadow-main);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.theme-sample:hover {
+  transform: translateY(-4px);
+  background: var(--color-secondary);
+  color: white;
 }
 
 /* Responsive for Mobile */
@@ -463,8 +735,8 @@ body {
   }
 
   .volume-slider {
-    width: 80px; /* Smaller slider */
-    height: 4px;
+    /* width: 80px; */ /* Smaller slider */
+    /* height: 4px; */
   }
 
   /* .bottom-section-container {
@@ -577,11 +849,6 @@ body {
 
   .icon-volume {
     font-size: 1rem;
-  }
-
-  .volume-slider {
-    width: 60px; /* Even smaller slider */
-    height: 4px;
   }
 
   .lyric-text,

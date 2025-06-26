@@ -362,4 +362,19 @@ const Player = {
   },
 };
 
-console.log(Player.elements.coverImage);
+//////////////////////////////////////////////////////////
+// Làm phần Modal tougle
+//////////////////////////////////////////////////////////
+const modal = $(".modal");
+const settingBtn = $(".setting-btn");
+const closeBtn = $(".close-btn");
+// Hàm tougle modal
+function toggleModal() {
+  modal.classList.toggle("show");
+}
+// Sự kiện nhấn nút menu và close
+settingBtn.addEventListener("click", toggleModal);
+closeBtn.addEventListener("click", toggleModal);
+//////////////////////////////////////////////////////////
+// Modal tougle
+//////////////////////////////////////////////////////////

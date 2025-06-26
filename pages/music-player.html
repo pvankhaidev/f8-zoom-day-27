@@ -70,16 +70,6 @@
           <button class="control-btn repeat-btn active">
             <i class="fa-solid fa-repeat icon-repeat"></i>
           </button>
-          <!-- <button class="control-btn volume-control volume-control-container">
-            <i class="fa-solid fa-volume-high icon-volume"></i>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value="80"
-              class="volume-slider"
-            />
-          </button> -->
           <button class="control-btn like-btn">
             <i class="fa-regular fa-heart"></i>
           </button>
@@ -180,7 +170,97 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal Settings -->
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-main">
+          <!-- Volume Control -->
+          <button class="control-btn volume-control volume-control-container">
+            <i class="fa-solid fa-volume-high icon-volume"></i>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="80"
+              class="volume-slider"
+            />
+          </button>
+
+          <!-- Playlist Slide Show -->
+          <h5>Chọn Playlist</h5>
+          <div class="modal-section slideshow-section">
+            <div class="playlist-slide-show">
+              <div class="slideshow">
+                <div class="slideshow-track">
+                  <div
+                    class="slide-item"
+                    style="background-image: url('../images/image12.jpg')"
+                  >
+                    Playlist 1
+                  </div>
+                  <div
+                    class="slide-item"
+                    style="background-image: url('../images/image7.jpg')"
+                  >
+                    Playlist 2
+                  </div>
+                  <div
+                    class="slide-item"
+                    style="background-image: url('../images/image8.jpg')"
+                  >
+                    Playlist 3
+                  </div>
+                  <div
+                    class="slide-item"
+                    style="background-image: url('../images/image9.jpg')"
+                  >
+                    Playlist 4
+                  </div>
+                  <div
+                    class="slide-item"
+                    style="background-image: url('../images/image10.jpg')"
+                  >
+                    Playlist 5
+                  </div>
+                  <div
+                    class="slide-item"
+                    style="background-image: url('../images/image11.jpg')"
+                  >
+                    Playlist 6
+                  </div>
+                </div>
+                <button class="slideshow-button prev">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="slideshow-button next">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theme Samples -->
+          <h5>Chọn Theme</h5>
+          <div class="modal-section theme-section">
+            <div class="theme-sample">Dracula 1</div>
+            <div class="theme-sample">Dracula 2</div>
+            <div class="theme-sample">Dracula 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="../js/music-player.js" class="player-script"></script>
+    <script
+      src="../js/music-player-slideshow.js"
+      class="player-script"
+    ></script>
     <script class="inline-script">
       function playSong(songId) {
         // Remove active class from all songs
