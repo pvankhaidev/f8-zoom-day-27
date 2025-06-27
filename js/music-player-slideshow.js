@@ -41,17 +41,18 @@ prevBtns.forEach((prevBtn) => {
     const slideShow = this.closest(".slideshow");
     const track = slideShow.querySelector(".slideshow-track");
 
-    const { old, current } = handleSlideShow(this);
+    handleSlideShow(this);
+    // const { old, current } = handleSlideShow(this);
 
-    function fireChangeEvent() {
-      track.removeEventListener("transitionend", fireChangeEvent);
-      const slideChange = new CustomEvent("slideshow:change", {
-        detail: { old, current },
-      });
-      document.dispatchEvent(slideChange);
-    }
+    // function fireChangeEvent() {
+    //   track.removeEventListener("transitionend", fireChangeEvent);
+    //   const slideChange = new CustomEvent("slideshow:change", {
+    //     detail: { old, current },
+    //   });
+    //   document.dispatchEvent(slideChange);
+    // }
 
-    track.addEventListener("transitionend", fireChangeEvent);
+    // track.addEventListener("transitionend", fireChangeEvent);
   });
 });
 
@@ -59,18 +60,18 @@ nextBtns.forEach((nextBtn) => {
   nextBtn.addEventListener("click", function () {
     const slideShow = this.closest(".slideshow");
     const track = slideShow.querySelector(".slideshow-track");
+    handleSlideShow(this);
+    // const { old, current } = handleSlideShow(this);
 
-    const { old, current } = handleSlideShow(this);
+    // function slideChangeEvent() {
+    //   track.removeEventListener("transitionend", slideChangeEvent);
+    //   const slideChange = new CustomEvent("slideshow:change", {
+    //     detail: { track: track, old, current },
+    //   });
+    //   document.dispatchEvent(slideChange);
+    // }
 
-    function slideChangeEvent() {
-      track.removeEventListener("transitionend", slideChangeEvent);
-      const slideChange = new CustomEvent("slideshow:change", {
-        detail: { track: track, old, current },
-      });
-      document.dispatchEvent(slideChange);
-    }
-
-    track.addEventListener("transitionend", slideChangeEvent);
+    // track.addEventListener("transitionend", slideChangeEvent);
   });
 });
 

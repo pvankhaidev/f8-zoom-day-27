@@ -667,6 +667,8 @@ const Player = {
     playlistSlideshowTrack: $(".slideshow-track"),
     playlistList: $(".playlist-list"),
     playlistHeaderText: $(".playlist-header-text"),
+    volumnControl: $(".volume-control-container"),
+    volumnSlider: $(".volume-slider"),
   }),
 
   // ──────────────────────── Methods ──────────────────────────────
@@ -1038,6 +1040,9 @@ const Player = {
 // ==================================================================
 
 // ==================================================================
+// ───────────────────────── XỬ LÝ SỰ KIỆN ──────────────────────────
+// ==================================================================
+// ==================================================================
 // ── S ──────────────────────── Modal ──────────────────────────────
 // Sự kiện nhấn nút menu và close
 const { modal, settingBtn, closeBtn } = Player.elements;
@@ -1045,6 +1050,7 @@ const { toggleModal } = Player.methods.modal;
 
 // Nhấn nút Menu mở Modal
 settingBtn.addEventListener("click", toggleModal);
+
 // Nhấn nút close và vùng overlay đóng Modal
 closeBtn.addEventListener("click", toggleModal);
 modal.addEventListener("click", function (event) {
@@ -1065,10 +1071,13 @@ const {
   forwardBtn,
   repeatBtn,
   likeBtn,
+  volumnControl,
+  volumnSlider,
 } = Player.elements;
 
 const { changeLyric, changeShuffle, changeRepeat, changeLiked, changePlay } =
   Player.methods.control;
+
 // Sự kiện nhấn nút cc
 lyricBtn.addEventListener("click", function () {
   changeLyric(
@@ -1077,14 +1086,17 @@ lyricBtn.addEventListener("click", function () {
     '<i class="fa-regular fa-closed-captioning"></i>'
   );
 });
+
 // Sự kiện nhấn nút shuffle
 shuffleBtn.addEventListener("click", function () {
   changeShuffle(this);
 });
+
 // Sự kiện nhấn nút repeat
 repeatBtn.addEventListener("click", function () {
   changeRepeat(this);
 });
+
 // Sự kiện nhấn nút yêu thích
 likeBtn.addEventListener("click", function () {
   changeLiked(
@@ -1093,6 +1105,7 @@ likeBtn.addEventListener("click", function () {
     '<i class="fa-regular fa-heart"></i>'
   );
 });
+
 // Sự kiện nhấn nút playBtn
 playBtn.addEventListener("click", function () {
   changePlay(
@@ -1101,15 +1114,34 @@ playBtn.addEventListener("click", function () {
     '<i class="fa-solid fa-play icon-play"></i>'
   );
 });
+
 // Sự kiện nhấn nút backward
 backwardBtn.addEventListener("click", function () {
   // Hàm xử lý lùi
 });
+
 // Sự kiện nhấn nút forward
 forwardBtn.addEventListener("click", function () {
   // Hàm xử lý tiến
 });
 
+// Sự kiện thay đổi volumn
+Player.elements.volumnSlider.addEventListener("input", function (e) {
+  const volume = parseInt(e.target.value, 10); // Lấy giá trị slider
+
+  // Gán volume cho audio (giá trị 0.0 – 1.0)
+  Player.methods.playback.setVolume(volume / 100);
+
+  // Đổi icon theo mức volume
+  const icon = Player.elements.volumnControl.querySelector("i");
+  if (volume > 50) {
+    icon.className = "fa-solid fa-volume-high icon-volume";
+  } else if (volume > 0 && volume <= 50) {
+    icon.className = "fa-solid fa-volume-low icon-volume";
+  } else {
+    icon.className = "fa-solid fa-volume-off icon-volume";
+  }
+});
 // ── E ──────────────────────── Control Button ─────────────────────
 // ==================================================================
 

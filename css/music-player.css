@@ -172,7 +172,7 @@ body
   width: 30%;
   max-width: 100%;
   height: 100%;
-  transition: width 0.3s ease;
+  transition: width 0.5s ease;
   border-radius: 12px;
   position: relative;
 }
@@ -189,7 +189,7 @@ body
   border-radius: 50%;
   box-shadow: 0 2px 6px var(--shadow-main);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
   z-index: 2;
 }
 
@@ -300,7 +300,7 @@ body
   overflow-y: hidden;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   position: absolute;
   top: 0;
   left: 0;
@@ -347,14 +347,14 @@ body
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   text-align: center;
   overflow-wrap: break-word;
 }
 
 .lyric-text:hover {
   background-color: var(--color-highlight-light);
-  transform: translateX(5px);
+  transform: translateX(2px);
 }
 
 .lyric-text.active {
@@ -376,13 +376,13 @@ body
   font-size: 1rem;
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
 }
 
 .song-name-item:hover {
   background-color: var(--color-highlight-light);
   border-radius: 8px;
-  transform: translateX(5px);
+  transform: translateX(2px);
 }
 
 .song-name-item.active {
@@ -508,8 +508,8 @@ body
   width: 100%;
 }
 .modal h5 {
-  color: var(--color-text);
-  margin-top: 20px;
+  color: var(--color-secondary);
+  /* margin-top: 20px; */
 }
 
 .modal-header {
@@ -517,7 +517,7 @@ body
   top: 0;
   left: 0;
   right: 0; /* Thêm dòng này để header kéo dài toàn phần */
-  height: 3rem;
+  height: 4rem;
   z-index: 1001;
   display: flex;
   justify-content: flex-end; /* Đẩy nút sang phải */
@@ -531,7 +531,7 @@ body
   width: 40px;
   height: 40px;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--color-secondary);
   cursor: pointer;
   display: flex;
@@ -540,7 +540,7 @@ body
 }
 
 .modal-main {
-  margin-top: 2rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -554,7 +554,7 @@ body
 .modal .volume-control-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   height: 40px;
   width: 100%;
   flex: 0 0 auto;
@@ -565,17 +565,18 @@ body
   font-size: 1.4rem;
   color: var(--color-secondary);
   width: 40px;
+  text-align: start;
 }
 
 .volume-slider {
   accent-color: var(--color-secondary);
-  height: 5px;
+  height: 8px;
   border-radius: 50%;
 }
 
 /* Playlist Slide Show */
 .modal-section.slideshow-section {
-  height: 200px;
+  height: 250px;
 }
 
 .playlist-slide-show {
@@ -622,7 +623,7 @@ body
   text-shadow: var(--shadow-main);
   /* box-shadow: inset 0 0 50px var(--color-highlight-light); */
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -651,7 +652,7 @@ body
   font-size: 2.2rem;
   cursor: pointer;
   background: none;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -702,7 +703,7 @@ body
   background: rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 6px var(--color-secondary);
   cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
   border: 2.5px solid transparent;
 }
 
@@ -730,7 +731,7 @@ body
   border-radius: 12px;
   box-shadow: 0 4px 8px var(--shadow-main);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.5s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -738,7 +739,7 @@ body
 }
 
 .theme-sample:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   background: var(--color-secondary);
   color: white;
 }
@@ -911,7 +912,11 @@ body
   .control-btn {
     width: 40px; /* Even smaller buttons */
     height: 40px;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+  }
+
+  .close-btn {
+    font-size: 1.6rem;
   }
 
   .play-btn {
