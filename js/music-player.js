@@ -676,7 +676,11 @@ class Player {
   // ===== Playback =====
   playSong(song = this.state.currentSong) {
     if (!song) return;
-    this.audio.src = song.songPath;
+    // Nếu đang phát đúng bài hiện tại thì không set lại src để giữ nguyên currentTime
+    if (this.audio.src !== this.getAudioSrc(song.songPath)) {
+      this.audio.src = song.songPath;
+      this.audio.currentTime = 0;
+    }
     this.audio.play();
     this.state.isPlaying = true;
     this.state.currentSong = song;
@@ -1007,6 +1011,13 @@ class Player {
       lyricsWrapper.classList.remove('active');
       playlistWrapper.classList.add('active');
     }
+  }
+
+  // Helper để lấy src tuyệt đối của audio (so sánh đúng)
+  getAudioSrc(path) {
+    const a = document.createElement('a');
+    a.href = path;
+    return a.href;
   }
 }
 
