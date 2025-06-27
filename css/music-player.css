@@ -127,7 +127,7 @@ body {
 
 .artist-name-text {
   font-size: 1.2rem;
-  margin-top: 8px;
+  margin-top: 10px;
   color: var(--color-text-secondary);
 }
 
@@ -409,6 +409,7 @@ body
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 5px 0;
 }
 
 .playlist-wrapper .song-title {
