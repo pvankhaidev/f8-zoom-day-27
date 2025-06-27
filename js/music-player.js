@@ -16,6 +16,20 @@ const Player = {
     }),
     // Biến lưu danh sách theme
     THEMES: Object.freeze({
+      // Sand desert – Nền sáng
+      sand: {
+        "--bg-gradient-main": "linear-gradient(135deg, #f8e9a1, #f76c6c)",
+        "--bg-panel": "rgba(255, 255, 255, 0.75)",
+        "--color-primary": "#ffe066",
+        "--color-secondary": "#f25f5c", // đậm nhất
+        "--color-tertiary": "#f8b195",
+        "--color-text-main": "#4a4a4a",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#fffbe7",
+        "--color-highlight-light": "#fff9e8",
+        "--color-text-secondary": "#777777",
+      },
+
       light: {
         "--bg-gradient-main": "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
         "--bg-panel": "rgba(255, 255, 255, 0.7)",
@@ -52,6 +66,270 @@ const Player = {
         "--color-highlight-light": "#f0ffdc",
         "--color-text-secondary": "#888888",
       },
+      modern: {
+        "--bg-gradient-main": " linear-gradient(135deg, #667eea, #764ba2)",
+        "--bg-panel": " rgba(255, 255, 255, 0.1)",
+        "--color-primary": " #d2afd8",
+        "--color-secondary": " #f057ff",
+        "--color-tertiary": " #a594f9",
+        "--color-text-main": " #ffffff",
+        "--shadow-main": " rgba(0, 0, 0, 0.4)",
+        "--color-highlight": " #fbe2fb",
+        "--color-highlight-light": " #d4a8fb",
+        "--color-text-secondary": " #cccccc",
+      },
+      candy: {
+        "--bg-gradient-main": "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+        "--bg-panel": "rgba(255, 255, 255, 0.6)",
+        "--color-primary": "#ff758c",
+        "--color-secondary": "#ff7eb3",
+        "--color-tertiary": "#ffc3a0",
+        "--color-text-main": "#3e3e3e",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#ffe4ec",
+        "--color-highlight-light": "#fff0f5",
+        "--color-text-secondary": "#888888",
+      },
+      sakura: {
+        "--bg-gradient-main": "linear-gradient(135deg, #fce4ec, #f8bbd0)",
+        "--bg-panel": "rgba(255, 245, 248, 0.7)",
+        "--color-primary": "#ec407a",
+        "--color-secondary": "#f06292",
+        "--color-tertiary": "#f8bbd0",
+        "--color-text-main": "#4a4a4a",
+        "--shadow-main": "rgba(0, 0, 0, 0.08)",
+        "--color-highlight": "#fff0f5",
+        "--color-highlight-light": "#ffebef",
+        "--color-text-secondary": "#888888",
+      },
+      midnight: {
+        "--bg-gradient-main":
+          "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+        "--bg-panel": "rgba(20, 20, 30, 0.8)",
+        "--color-primary": "#64dfdf",
+        "--color-secondary": "#80ffdb",
+        "--color-tertiary": "#6930c3",
+        "--color-text-main": "#e0e0e0",
+        "--shadow-main": "rgba(0, 0, 0, 0.6)",
+        "--color-highlight": "#222831",
+        "--color-highlight-light": "#31363f",
+        "--color-text-secondary": "#aaaaaa",
+      },
+      forest: {
+        "--bg-gradient-main": "linear-gradient(135deg, #a8e063, #baf79e)",
+        "--bg-panel": "rgba(255, 255, 255, 0.65)",
+        "--color-primary": "#3b945e",
+        "--color-secondary": "#397b54",
+        "--color-tertiary": "#4e944f",
+        "--color-text-main": "#263a29",
+        "--shadow-main": "rgba(0, 0, 0, 0.15)",
+        "--color-highlight": "#dff6dd",
+        "--color-highlight-light": "#f2fff2",
+        "--color-text-secondary": "#888888",
+      },
+      peach: {
+        "--bg-gradient-main": "linear-gradient(135deg, #ffecd2, #fcb69f)",
+        "--bg-panel": "rgba(255, 255, 255, 0.8)",
+        "--color-primary": "#ffb085",
+        "--color-secondary": "#e17a47", // đậm nhất
+        "--color-tertiary": "#ffd8c2",
+        "--color-text-main": "#4d3b3b",
+        "--shadow-main": "rgba(0, 0, 0, 0.12)",
+        "--color-highlight": "#fff2eb",
+        "--color-highlight-light": "#fff8f4",
+        "--color-text-secondary": "#888888",
+      },
+
+      // Mint mát lạnh – Nền sáng
+      mint: {
+        "--bg-gradient-main": "linear-gradient(135deg, #d9f8c4, #b3e5d9)",
+        "--bg-panel": "rgba(255, 255, 255, 0.75)",
+        "--color-primary": "#b2dfdb",
+        "--color-secondary": "#009688", // đậm
+        "--color-tertiary": "#80cbc4",
+        "--color-text-main": "#2e3a36",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#e0f2f1",
+        "--color-highlight-light": "#f1fffc",
+        "--color-text-secondary": "#666666",
+      },
+
+      // Neon Tokyo – Nền tối
+      neon: {
+        "--bg-gradient-main":
+          "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
+        "--bg-panel": "rgba(25, 25, 35, 0.9)",
+        "--color-primary": "#9d4edd",
+        "--color-secondary": "#e0aaff", // sáng hơn
+        "--color-tertiary": "#7b2cbf",
+        "--color-text-main": "#f0f0f0",
+        "--shadow-main": "rgba(0, 0, 0, 0.5)",
+        "--color-highlight": "#322653",
+        "--color-highlight-light": "#3c3a6e",
+        "--color-text-secondary": "#bbbbbb",
+      },
+
+      // Cyberpunk – Nền tối
+      cyberpunk: {
+        "--bg-gradient-main": "linear-gradient(135deg, #ff0057, #7a00ff)",
+        "--bg-panel": "rgba(10, 10, 20, 0.85)",
+        "--color-primary": "#ff67e7",
+        "--color-secondary": "#ffde59", // sáng nhất
+        "--color-tertiary": "#8c52ff",
+        "--color-text-main": "#ffffff",
+        "--shadow-main": "rgba(0, 0, 0, 0.7)",
+        "--color-highlight": "#1a1a2e",
+        "--color-highlight-light": "#29294d",
+        "--color-text-secondary": "#999999",
+      },
+
+      // Ocean deep – Nền tối
+      ocean: {
+        "--bg-gradient-main": "linear-gradient(135deg, #2b5876, #4e4376)",
+        "--bg-panel": "rgba(30, 30, 50, 0.9)",
+        "--color-primary": "#4d96ff",
+        "--color-secondary": "#90e0ef", // sáng hơn
+        "--color-tertiary": "#00b4d8",
+        "--color-text-main": "#d9f8ff",
+        "--shadow-main": "rgba(0, 0, 0, 0.3)",
+        "--color-highlight": "#142850",
+        "--color-highlight-light": "#27496d",
+        "--color-text-secondary": "#a0c4ff",
+      },
+
+      // Cloudy Blue – Nền sáng
+      cloudy: {
+        "--bg-gradient-main": "linear-gradient(135deg, #dfe9f3, #ffffff)",
+        "--bg-panel": "rgba(255, 255, 255, 0.85)",
+        "--color-primary": "#b3cde0",
+        "--color-secondary": "#3f72af", // đậm hơn
+        "--color-tertiary": "#a9def9",
+        "--color-text-main": "#333333",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#f7f9fb",
+        "--color-highlight-light": "#ecf4fb",
+        "--color-text-secondary": "#666666",
+      },
+      sunset: {
+        "--bg-gradient-main": "linear-gradient(135deg, #f7971e, #ffd200)",
+        "--bg-panel": "rgba(255, 250, 230, 0.8)",
+        "--color-primary": "#ffb347",
+        "--color-secondary": "#ff8008", // đậm
+        "--color-tertiary": "#ffd194",
+        "--color-text-main": "#4b3e2f",
+        "--shadow-main": "rgba(0, 0, 0, 0.15)",
+        "--color-highlight": "#fff3d6",
+        "--color-highlight-light": "#fff9eb",
+        "--color-text-secondary": "#888888",
+      },
+      lavender: {
+        "--bg-gradient-main": "linear-gradient(135deg, #eecda3, #ef629f)",
+        "--bg-panel": "rgba(255, 240, 250, 0.75)",
+        "--color-primary": "#d291bc",
+        "--color-secondary": "#a4508b",
+        "--color-tertiary": "#f5b0cb",
+        "--color-text-main": "#3e3e3e",
+        "--shadow-main": "rgba(0, 0, 0, 0.08)",
+        "--color-highlight": "#fde4f2",
+        "--color-highlight-light": "#fff0fa",
+        "--color-text-secondary": "#777777",
+      },
+      vintage: {
+        "--bg-gradient-main": "linear-gradient(135deg, #e0c3fc, #8ec5fc)",
+        "--bg-panel": "rgba(255, 255, 255, 0.65)",
+        "--color-primary": "#c3aed6",
+        "--color-secondary": "#8b5fbf", // đậm
+        "--color-tertiary": "#a17eb5",
+        "--color-text-main": "#4e4e4e",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#f3e9ff",
+        "--color-highlight-light": "#faf6ff",
+        "--color-text-secondary": "#888888",
+      },
+      moody: {
+        "--bg-gradient-main": "linear-gradient(135deg, #2b5876, #4e4376)",
+        "--bg-panel": "rgba(25, 25, 35, 0.8)",
+        "--color-primary": "#9baec8",
+        "--color-secondary": "#cddafd", // sáng
+        "--color-tertiary": "#4c6793",
+        "--color-text-main": "#f1f1f1",
+        "--shadow-main": "rgba(0, 0, 0, 0.4)",
+        "--color-highlight": "#2c3e50",
+        "--color-highlight-light": "#34495e",
+        "--color-text-secondary": "#aaaaaa",
+      },
+      coral: {
+        "--bg-gradient-main": "linear-gradient(135deg, #ff9a8b, #ff6a88)",
+        "--bg-panel": "rgba(255, 240, 240, 0.7)",
+        "--color-primary": "#ff7b7b",
+        "--color-secondary": "#ff4e50",
+        "--color-tertiary": "#ffa69e",
+        "--color-text-main": "#4a4a4a",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#ffe5e5",
+        "--color-highlight-light": "#fff1f1",
+        "--color-text-secondary": "#888888",
+      },
+      glacier: {
+        "--bg-gradient-main": "linear-gradient(135deg, #c2e9fb, #a1c4fd)",
+        "--bg-panel": "rgba(255, 255, 255, 0.8)",
+        "--color-primary": "#89dce4",
+        "--color-secondary": "#4ea3d1",
+        "--color-tertiary": "#7bdff2",
+        "--color-text-main": "#2f3e46",
+        "--shadow-main": "rgba(0, 0, 0, 0.1)",
+        "--color-highlight": "#e0f7ff",
+        "--color-highlight-light": "#f2fbff",
+        "--color-text-secondary": "#666666",
+      },
+      noir: {
+        "--bg-gradient-main": "linear-gradient(135deg, #232526, #414345)",
+        "--bg-panel": "rgba(20, 20, 20, 0.85)",
+        "--color-primary": "#666666",
+        "--color-secondary": "#eeeeee", // sáng
+        "--color-tertiary": "#999999",
+        "--color-text-main": "#ffffff",
+        "--shadow-main": "rgba(0, 0, 0, 0.5)",
+        "--color-highlight": "#2a2a2a",
+        "--color-highlight-light": "#3a3a3a",
+        "--color-text-secondary": "#bbbbbb",
+      },
+      spring: {
+        "--bg-gradient-main": "linear-gradient(135deg, #f6d365, #fda085)",
+        "--bg-panel": "rgba(255, 255, 255, 0.7)",
+        "--color-primary": "#f9a26c",
+        "--color-secondary": "#f76c6c", // đậm
+        "--color-tertiary": "#ffd97d",
+        "--color-text-main": "#444444",
+        "--shadow-main": "rgba(0, 0, 0, 0.08)",
+        "--color-highlight": "#fff2d7",
+        "--color-highlight-light": "#fff8ec",
+        "--color-text-secondary": "#777777",
+      },
+      galaxy: {
+        "--bg-gradient-main": "linear-gradient(135deg, #654ea3, #eaafc8)",
+        "--bg-panel": "rgba(30, 20, 40, 0.9)",
+        "--color-primary": "#a685e2",
+        "--color-secondary": "#fbc7d4", // sáng hơn
+        "--color-tertiary": "#9153c9",
+        "--color-text-main": "#f5f5f5",
+        "--shadow-main": "rgba(0, 0, 0, 0.5)",
+        "--color-highlight": "#2e2e3a",
+        "--color-highlight-light": "#413e52",
+        "--color-text-secondary": "#bbbbbb",
+      },
+      denim: {
+        "--bg-gradient-main": "linear-gradient(135deg, #398dfc, #29baff)",
+        "--bg-panel": "rgba(240, 245, 255, 0.85)",
+        "--color-primary": "#7aa1f7",
+        "--color-secondary": "#0844a1", // đậm
+        "--color-tertiary": "#9bb1f9",
+        "--color-text-main": "#1c1c3c",
+        "--shadow-main": "rgba(0, 0, 0, 0.2)",
+        "--color-highlight": "#e6ecff",
+        "--color-highlight-light": "#f0f4ff",
+        "--color-text-secondary": "#555555",
+      },
     }),
   }),
 
@@ -67,8 +345,8 @@ const Player = {
     isShuffle: false,
     // Biến lưu trạng thái loop
     loopMode: 0,
-    // Toàn bộ danh sách phát, sẽ truyền từ file JSON
-    allSongItems: [
+    // Toàn bộ danh sách phát,
+    songItems: [
       {
         id: 1,
         name: "Chạm Đáy Nỗi Đau",
@@ -275,26 +553,45 @@ const Player = {
     ],
 
     // Tất cả các danh sách phát đề xuất
-    allPlaylists: [
+    playlists: [
       {
         id: 1,
-        name: "Top 50",
-        imgPath: "",
-        songIds: [],
+        name: "Top-50",
+        imgPath: "../images/image9.jpg",
+        songIds: [1, 2, 3, 4],
       },
       {
         id: 2,
         name: "EDM",
-        imgPath: "",
-        songIds: [],
+        imgPath: "../images/image10.jpg",
+        songIds: [4, 5, 6, 7],
       },
       {
         id: 3,
         name: "Remix",
-        imgPath: "",
-        songIds: [],
+        imgPath: "../images/image11.jpg",
+        songIds: [1, 3, 5, 7],
+      },
+      {
+        id: 4,
+        name: "Chill",
+        imgPath: "../images/image12.jpg",
+        songIds: [2, 4, 6, 7],
+      },
+      {
+        id: 5,
+        name: "Lo-fi",
+        imgPath: "../images/image13.jpg",
+        songIds: [5, 6, 7, 1],
+      },
+      {
+        id: 6,
+        name: "Bass",
+        imgPath: "../images/image14.jpg",
+        songIds: [6, 5, 4, 3],
       },
     ],
+
     // Biến lưu bài hát hiện tại
     currentSong: {
       id: null,
@@ -307,16 +604,15 @@ const Player = {
       sub: [],
     },
     // Biến lưu bài phát gần nhất
-    lastPlayedSong: {
+    lastPlayed: {
       id: null,
       time: null,
+      playlistId: null,
     },
     // Danh sách phát hiện tại
     currentPlaylist: [],
     // Danh sách bài hát yêu thích
     likedItems: [],
-    // Danh sách đã phát gần đây, lưu 2 bài gần nhất
-    playHistory: [],
   },
 
   // ──────────────────────── Elements ──────────────────────────────
@@ -367,17 +663,39 @@ const Player = {
     modalContent: $(".modal-content"),
     settingBtn: $(".setting-btn"),
     closeBtn: $(".close-btn"),
+    themeSection: $(".theme-section"),
+    playlistSlideshowTrack: $(".slideshow-track"),
+    playlistList: $(".playlist-list"),
+    playlistHeaderText: $(".playlist-header-text"),
   }),
 
   // ──────────────────────── Methods ──────────────────────────────
   methods: {
-    // ================================
-    // ── Playback Control Methods ──
-    // ================================
+    // ==== Hàm sử dụng chung ====
+    common: {
+      // Hàm khởi tạo UI
+      initUI() {
+        console.log("initUI");
+      },
+
+      // Hàm khởi tạo player
+      initPlayer() {
+        console.log("init");
+      },
+
+      // Chuyển đổi thời gian giây → định dạng mm:ss
+      formatTime(time) {
+        const mins = Math.floor(time / 60);
+        const secs = Math.floor(time % 60)
+          .toString()
+          .padStart(2, "0");
+        return `${mins}:${secs}`;
+      },
+    },
+
+    // ==== Playback ====
     playback: {
-      /**
-       * Phát bài hát hiện tại
-       */
+      // Phát bài hát hiện tại
       playSong() {
         const song = Player.vars.currentSong;
         if (!song || !song.songPath) return;
@@ -388,17 +706,13 @@ const Player = {
         Player.vars.isPlaying = true;
       },
 
-      /**
-       * Tạm dừng bài hát
-       */
+      // Tạm dừng bài hát
       pauseSong() {
         Player.vars.audio.pause();
         Player.vars.isPlaying = false;
       },
 
-      /**
-       * Chuyển đổi giữa phát và tạm dừng
-       */
+      // Chuyển đổi giữa phát và tạm dừng
       togglePlayPause() {
         const audio = Player.vars.audio;
         if (audio.paused) {
@@ -408,14 +722,12 @@ const Player = {
         }
       },
 
-      /**
-       * Phát bài tiếp theo trong danh sách
-       */
+      // Phát bài tiếp theo trong danh sách
       playNext() {
         const currentId = Player.vars.currentSong.id;
         const playlist = Player.vars.currentPlaylist.length
           ? Player.vars.currentPlaylist
-          : Player.vars.allSongItems;
+          : Player.vars.songItems;
 
         const index = playlist.findIndex((s) => s.id === currentId);
         const nextIndex = (index + 1) % playlist.length;
@@ -424,14 +736,12 @@ const Player = {
         this.playSong();
       },
 
-      /**
-       * Phát bài trước đó trong danh sách
-       */
+      // Phát bài trước đó trong danh sách
       playPrev() {
         const currentId = Player.vars.currentSong.id;
         const playlist = Player.vars.currentPlaylist.length
           ? Player.vars.currentPlaylist
-          : Player.vars.allSongItems;
+          : Player.vars.songItems;
 
         const index = playlist.findIndex((s) => s.id === currentId);
         const prevIndex = (index - 1 + playlist.length) % playlist.length;
@@ -440,144 +750,182 @@ const Player = {
         this.playSong();
       },
 
-      /**
-       * Tua đến thời điểm cụ thể trong bài hát
-       * @param {number} time - thời gian muốn tua đến (tính bằng giây)
-       */
+      // Tua đến thời điểm cụ thể trong bài hát
       seekTo(time) {
         Player.vars.audio.currentTime = time;
       },
 
-      /**
-       * Cập nhật tiến trình bài hát và đồng bộ UI
-       */
+      // Cập nhật tiến trình bài hát và đồng bộ UI
       updateProgress() {
         const audio = Player.vars.audio;
         const current = audio.currentTime;
         const duration = audio.duration || 0;
 
-        Player.elements.currentTimeText.textContent = this.formatTime(current);
-        Player.elements.durationText.textContent = this.formatTime(duration);
+        Player.elements.currentTimeText.textContent =
+          Player.methods.formatTime(current);
+        Player.elements.durationText.textContent =
+          Player.methods.formatTime(duration);
 
         const percent = (current / duration) * 100;
         Player.elements.progressFill.style.width = `${percent}%`;
       },
 
-      /**
-       * Thiết lập âm lượng
-       * @param {number} volume - giá trị từ 0.0 đến 1.0
-       */
+      // Thiết lập âm lượng
       setVolume(volume) {
         Player.vars.audio.volume = Math.min(Math.max(volume, 0), 1);
       },
 
-      /**
-       * Chuyển đổi thời gian giây → định dạng mm:ss
-       * @param {number} time
-       * @returns {string}
-       */
-      formatTime(time) {
-        const mins = Math.floor(time / 60);
-        const secs = Math.floor(time % 60)
-          .toString()
-          .padStart(2, "0");
-        return `${mins}:${secs}`;
-      },
+      // Hiển thị thông tin bài hát đang phát
+      renderSongInfo(song) {},
     },
 
-    // ==== Loop & Shuffle ====
-    repeatShuffle: {
-      toggleShuffle() {
-        // Bật/tắt chế độ phát ngẫu nhiên
-      },
-      changeLoopMode() {
-        // Chuyển giữa các chế độ lặp
-      },
-      getNextSongId() {
-        // Lấy ID bài hát kế tiếp dựa trên chế độ lặp/ngẫu nhiên
-      },
-    },
-
-    // ==== Theme handling ====
+    // ==== Theme====
     theme: {
+      // Render theme từ dữ liệu theme
+      renderTheme() {
+        const { themeSection } = Player.elements;
+        themeSection.innerHTML = ""; // Xóa trước nếu đã có
+
+        const themes = Player.consts.THEMES;
+        for (const themeName in themes) {
+          const themeDiv = document.createElement("div");
+          themeDiv.classList.add("theme-sample");
+          themeDiv.textContent = themeName;
+          themeDiv.dataset.theme = themeName;
+
+          // Gán màu nền và màu chữ dựa trên biến trong theme
+          const themeVars = themes[themeName];
+          themeDiv.style.background = themeVars["--bg-gradient-main"];
+          themeDiv.style.color = themeVars["--color-secondary"];
+
+          // Gắn sự kiện click để áp dụng theme
+          themeDiv.addEventListener("click", () => {
+            Player.methods.theme.applyTheme(themeName);
+          });
+
+          themeSection.appendChild(themeDiv);
+        }
+      },
+
+      // Áp dụng theme
       applyTheme(themeName) {
-        // Áp dụng theme theo tên
-      },
-      toggleTheme() {
-        // Chuyển đổi theme giữa các kiểu đã có
-      },
-      saveTheme() {
-        // Lưu theme hiện tại vào localStorage
-      },
-      loadTheme() {
-        // Tải theme đã lưu từ localStorage
+        const theme = Player.consts.THEMES[themeName];
+        if (!theme) return;
+
+        const root = document.documentElement;
+
+        Object.entries(theme).forEach(([key, value]) => {
+          root.style.setProperty(key, value);
+        });
       },
     },
 
     // ==== Liked Songs ====
     liked: {
-      toggleLike(songId) {
-        // Thêm hoặc xoá bài hát khỏi danh sách yêu thích
-      },
-      isLiked(songId) {
-        // Kiểm tra xem bài hát có nằm trong danh sách yêu thích không
-      },
-      renderLikedSongs() {
-        // Hiển thị danh sách bài hát yêu thích
-      },
-      saveLikedSongs() {
-        // Lưu danh sách yêu thích vào localStorage
-      },
-      loadLikedSongs() {
-        // Tải danh sách yêu thích từ localStorage
-      },
+      // Thêm hoặc xoá bài hát khỏi danh sách yêu thích
+      toggleLike(songId) {},
+
+      // Kiểm tra xem bài hát có nằm trong danh sách yêu thích không
+      isLiked(songId) {},
+
+      // Hiển thị danh sách bài hát yêu thích
+      renderLikedPlaylist() {},
     },
 
     // ==== Playlist Management ====
     playlist: {
       renderPlaylist() {
-        // Hiển thị danh sách phát
+        const { playlistSlideshowTrack } = Player.elements;
+        playlistSlideshowTrack.innerHTML = ""; // xóa cũ
+
+        const playlists = Player.vars.playlists;
+        playlists.forEach((pl) => {
+          const slide = document.createElement("div");
+          slide.classList.add("slide-item");
+          slide.style.backgroundImage = `url('${pl.imgPath}')`;
+          slide.textContent = pl.name;
+          slide.dataset.id = pl.id;
+
+          // Click chọn playlist => apply
+          slide.addEventListener("click", () => {
+            Player.methods.playlist.applyPlaylist(pl.id);
+          });
+
+          playlistSlideshowTrack.appendChild(slide);
+        });
+
+        Player.methods.playlist.applyPlaylist(playlists[0].id);
       },
-      loadPlaylistById(id) {
-        // Tải danh sách phát theo ID
+
+      applyPlaylist(playlistId) {
+        const { playlistList, playlistHeaderText } = Player.elements;
+        const playlists = Player.vars.playlists;
+        const songItems = Player.vars.songItems;
+
+        // Tìm playlist theo id
+        const playlist = playlists.find((pl) => pl.id === playlistId);
+        if (!playlist) {
+          console.warn("Playlist không tồn tại:", playlistId);
+          return;
+        }
+
+        // Lấy danh sách bài hát theo songIds trong playlist
+        const songs = playlist.songIds
+          .map((id) => songItems.find((s) => s.id === id))
+          .filter(Boolean); // lọc undefined nếu có
+
+        // Xóa nội dung cũ
+        playlistList.innerHTML = "";
+
+        // Tạo từng li cho mỗi bài
+        songs.forEach((song, index) => {
+          const li = document.createElement("li");
+          li.classList.add("song-name", "song-name-item");
+          if (index === 0) li.classList.add("active");
+
+          li.setAttribute("onclick", `playSong(${song.id})`);
+          li.dataset.id = song.id;
+
+          // Nội dung bài hát
+          const titleSpan = document.createElement("span");
+          titleSpan.className = "song-title";
+          titleSpan.textContent = `${index + 1}. ${song.name}`;
+
+          const durationSpan = document.createElement("span");
+          durationSpan.className = "song-duration";
+          durationSpan.textContent = song.time;
+
+          li.appendChild(titleSpan);
+          li.appendChild(durationSpan);
+
+          playlistList.appendChild(li);
+        });
+
+        playlistHeaderText.textContent = playlist.name;
+        // Có thể update Player.vars.currentPlaylist = songs để lưu trạng thái playlist đang chơi
+        Player.vars.currentPlaylist = songs;
+
+        // Optional: Tự động phát bài đầu tiên khi đổi playlist
+        // Player.methods.playback.playSong();
       },
     },
 
     // ==== Lyrics ====
     lyrics: {
-      renderLyrics(songId) {
-        // Hiển thị lời bài hát theo ID
-      },
-      highlightCurrentLyric(currentTime) {
-        // Tô đậm câu đang phát theo thời gian hiện tại
-      },
-    },
+      // Hiển thị lời bài hát
+      renderLyrics() {},
 
-    // ==== Song Info Display ====
-    display: {
-      renderSongInfo(song) {
-        // Hiển thị thông tin bài hát đang phát
-      },
-    },
-
-    // ==== Playback History ====
-    history: {
-      addToHistory(songId) {
-        // Thêm bài hát vào lịch sử phát gần đây
-      },
-      renderHistory() {
-        // Hiển thị lịch sử phát
-      },
+      // Tô đậm câu đang phát theo thời gian hiện tại
+      highlightCurrentLyric(currentTime) {},
     },
 
     // ==== Local storage ====
     storage: {
-      saveLastPlayed() {
-        // Lưu bài hát phát gần nhất vào localStorage
-      },
-      loadLastPlayed() {
-        // Tải bài hát gần nhất đã phát từ localStorage
-      },
+      // Lưu dữ liệu vào localStorage
+      saveStorage() {},
+
+      // Tải dữ liệu từ localStorage
+      loadStorage() {},
     },
 
     // ==== Modal ====
@@ -587,21 +935,32 @@ const Player = {
         modal.classList.toggle("show");
       },
     },
+
     // ==== Control Button ====
-    controlButton: {
+    control: {
       // Hàm đổi trạng thái bật tắt lyrics
-      changeLyricState(el, iconActive, iconNone) {
+      changeLyric(el, iconActive, iconNone) {
+        const { lyricsWrapper, playlistWrapper } = Player.elements;
         el.classList.toggle("active");
         el.innerHTML = el.classList.contains("active") ? iconActive : iconNone;
         Player.vars.isLyricsVisible = el.classList.contains("active");
+        if (Player.vars.isLyricsVisible) {
+          lyricsWrapper.classList.add("active");
+          playlistWrapper.classList.remove("active");
+        } else {
+          lyricsWrapper.classList.remove("active");
+          playlistWrapper.classList.add("active");
+        }
       },
+
       // Hàm đổi trạng thái bật tắt trộn
-      changeShuffleState(el) {
+      changeShuffle(el) {
         el.classList.toggle("inactive");
         Player.vars.isShuffle = el.classList.contains("inactive");
       },
+
       // Hàm đổi trạng thái bật tắt repeat
-      changeRepeatState(el) {
+      changeRepeat(el) {
         const { NO_REPEAT, REPEAT_ONE, REPEAT_ALL } =
           Player.consts.REPEAT_MODES;
         el.classList.remove("active");
@@ -618,10 +977,10 @@ const Player = {
           el.classList.add("inactive");
           Player.vars.loopMode = NO_REPEAT;
         }
-        console.log(Player.vars.loopMode);
       },
+
       // Hàm đổi trạng thái bật tắt yêu thích
-      changeLikedState(el, iconActive, iconNone, isForce = null) {
+      changeLiked(el, iconActive, iconNone, isForce = null) {
         let isLiked = false;
         if (isForce) {
           // Gán trực tiếp
@@ -648,8 +1007,9 @@ const Player = {
           // Hoặc hàm xóa khỏi mảng, storage
         }
       },
+
       // Hàm đổi trạng thái play, pause
-      changePlayState(el, iconPause, iconPlay, blnForce = null) {
+      changePlay(el, iconPause, iconPlay, blnForce = null) {
         const audio = Player.vars.audio;
         const currentSong = Player.vars.currentSong;
 
@@ -660,23 +1020,13 @@ const Player = {
           Player.vars.isPlaying = el.classList.contains("active");
         }
 
+        // Cập nhật icon
         el.innerHTML = Player.vars.isPlaying ? iconPause : iconPlay;
 
         if (Player.vars.isPlaying) {
-          const currentPath = new URL(
-            currentSong.songPath,
-            window.location.href
-          ).href;
-          if (audio.src !== currentPath) {
-            audio.src = currentPath;
-          }
-
-          // Nếu đang không phát, phát tiếp (resume)
-          if (audio.paused) {
-            audio.play();
-          }
+          // Phát
         } else {
-          audio.pause();
+          // Dừng
         }
       },
     },
@@ -715,16 +1065,11 @@ const {
   likeBtn,
 } = Player.elements;
 
-const {
-  changeLyricState,
-  changeShuffleState,
-  changeRepeatState,
-  changeLikedState,
-  changePlayState,
-} = Player.methods.controlButton;
+const { changeLyric, changeShuffle, changeRepeat, changeLiked, changePlay } =
+  Player.methods.control;
 // Sự kiện nhấn nút cc
 lyricBtn.addEventListener("click", function () {
-  changeLyricState(
+  changeLyric(
     this,
     '<i class="fa-solid fa-closed-captioning"></i>',
     '<i class="fa-regular fa-closed-captioning"></i>'
@@ -732,15 +1077,15 @@ lyricBtn.addEventListener("click", function () {
 });
 // Sự kiện nhấn nút shuffle
 shuffleBtn.addEventListener("click", function () {
-  changeShuffleState(this);
+  changeShuffle(this);
 });
 // Sự kiện nhấn nút repeat
 repeatBtn.addEventListener("click", function () {
-  changeRepeatState(this);
+  changeRepeat(this);
 });
 // Sự kiện nhấn nút yêu thích
 likeBtn.addEventListener("click", function () {
-  changeLikedState(
+  changeLiked(
     this,
     '<i class="fa-solid fa-heart"></i>',
     '<i class="fa-regular fa-heart"></i>'
@@ -748,7 +1093,7 @@ likeBtn.addEventListener("click", function () {
 });
 // Sự kiện nhấn nút playBtn
 playBtn.addEventListener("click", function () {
-  changePlayState(
+  changePlay(
     this,
     '<i class="fa-solid fa-pause"></i>',
     '<i class="fa-solid fa-play icon-play"></i>'
@@ -767,24 +1112,5 @@ forwardBtn.addEventListener("click", function () {
 // ==================================================================
 
 //
-const playback = Player.methods.playback;
-const audio = Player.vars.audio;
-
-// Gán bài hát đầu tiên làm current
-Player.vars.currentSong = Player.vars.allSongItems[0];
-
-// Cập nhật src vào thẻ Audio
-audio.src = Player.vars.currentSong.songPath;
-
-// Load metadata như thời lượng
-audio.addEventListener("loadedmetadata", () => {
-  Player.elements.durationText.textContent = playback.formatTime(
-    audio.duration
-  );
-});
-
-// Cập nhật thời gian, tiến độ
-audio.addEventListener("timeupdate", playback.updateProgress);
-
-// Xử lý khi kết thúc bài hát
-audio.addEventListener("ended", playback.playNext);
+Player.methods.theme.renderTheme();
+Player.methods.playlist.renderPlaylist();
