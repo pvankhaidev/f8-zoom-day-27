@@ -675,7 +675,9 @@ const Player = {
     common: {
       // Hàm khởi tạo UI
       initUI() {
-        console.log("initUI");
+        //
+        Player.methods.theme.renderTheme();
+        Player.methods.playlist.renderPlaylist();
       },
 
       // Hàm khởi tạo player
@@ -1111,6 +1113,4 @@ forwardBtn.addEventListener("click", function () {
 // ── E ──────────────────────── Control Button ─────────────────────
 // ==================================================================
 
-//
-Player.methods.theme.renderTheme();
-Player.methods.playlist.renderPlaylist();
+Player.methods.common.initUI();
