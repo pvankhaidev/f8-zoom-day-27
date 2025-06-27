@@ -1144,24 +1144,26 @@ Player.elements.volumnSlider.addEventListener("input", function (e) {
 });
 
 // Sự kiện click vào icon volume
-Player.elements.volumnControl.addEventListener("click", function () {
-  const icon = this.querySelector("i");
-  const slider = Player.elements.volumnSlider;
+Player.elements.volumnControl
+  .querySelector("i")
+  .addEventListener("click", function () {
+    const icon = this;
+    const slider = Player.elements.volumnSlider;
 
-  // Nếu đang tắt tiếng (volume-off), bật lên mức 50
-  if (icon.classList.contains("fa-volume-off")) {
-    icon.className = "fa-solid fa-volume-low icon-volume";
-    slider.value = 50;
-  } else {
-    // Nếu đang có âm (low hoặc high), chuyển về tắt tiếng
-    icon.className = "fa-solid fa-volume-off icon-volume";
-    slider.value = 0;
-  }
+    // Nếu đang tắt tiếng (volume-off), bật lên mức 50
+    if (icon.classList.contains("fa-volume-off")) {
+      icon.className = "fa-solid fa-volume-high icon-volume";
+      slider.value = 70;
+    } else {
+      // Nếu đang có âm (low hoặc high), chuyển về tắt tiếng
+      icon.className = "fa-solid fa-volume-off icon-volume";
+      slider.value = 0;
+    }
 
-  // Cập nhật volume thực tế
-  const volume = parseInt(slider.value, 10);
-  Player.methods.playback.setVolume(volume / 100);
-});
+    // Cập nhật volume thực tế
+    const volume = parseInt(slider.value, 10);
+    Player.methods.playback.setVolume(volume / 100);
+  });
 // ── E ──────────────────────── Control Button ─────────────────────
 // ==================================================================
 
